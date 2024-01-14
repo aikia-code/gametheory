@@ -37,7 +37,7 @@ class Session:
     def get_players(self):
         return {"A": self.playerA.name, "B": self.playerB.name}
 
-    def get_player_choice(self, player: Player) -> tuple:
+    def get_player_choice(self, name: str) -> tuple:
         """Returns the exact response of a player
 
         Args:
@@ -46,9 +46,9 @@ class Session:
         Returns:
             tuple: Choice tuple of player
         """
-        if player == self.playerA:
+        if name == self.playerA.name:
             return self.playerA.choice
-        if player == self.playerB:
+        if name == self.playerB.name:
             return self.playerB.choice
 
     def get_choices(self) -> dict:
@@ -62,7 +62,7 @@ class Session:
             self.playerB.name: self.playerB.choice,
         }
 
-    def get_player_score(self, player: Player) -> tuple:
+    def get_player_score(self, name: str) -> tuple:
         """Returns the exact score of a Player
 
         Args:
@@ -71,9 +71,9 @@ class Session:
         Returns:
             tuple: Score tuple of player
         """
-        if player == self.playerA:
+        if name == self.playerA.name:
             return self.playerA.score
-        if player == self.playerB:
+        if name == self.playerB.name:
             return self.playerB.score
 
     def get_scores(self):

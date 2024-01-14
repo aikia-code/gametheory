@@ -16,18 +16,20 @@ GameLoop:
 
 
 class GameLoop:
-    def __init__(self) -> None:
-        self.sessions = []
-
     def run(self, rounds: int) -> None:
-        player_a, player_b = Player("Tit for tat"), Player("Random")
+        sessions = []
 
-        session = Session(player_a, player_b)
+        p1 = "Tit for tat"
+        p2 = "Random"
 
         for i in range(rounds):
+            player_a, player_b = Player(p1), Player(p2)
+
+            session = Session(player_a, player_b)
+
             # player A strategy is tit for tat
             try:
-                if self.sessions[-1].get_player_choice(player_b) == Choice.DEFECT:
+                if sessions[-1].get_player_choice(p2) == Choice.DEFECT:
                     player_a.choose(Choice.DEFECT)
                 else:
                     player_a.choose(Choice.COOPORATE)
@@ -42,8 +44,24 @@ class GameLoop:
             # session computation
             session.compute_score()
 
+            # print(session.get_choices())
+
             # record session data
-            self.sessions.append(session)
+            sessions.append(session)
+
+        print(p1)
+
+        for sess in sessions:
+            print(sess.get_player_choice(p1)[2], end=" ")
+
+        print("")
+
+        for sess in sessions:
+            print(sess.get_player_choice(p2)[2], end=" ")
+
+        print("")
+
+        print(p2, end=" ")
 
     def get_final_scores(self) -> dict:
         pass
