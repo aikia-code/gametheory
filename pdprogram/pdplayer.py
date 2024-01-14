@@ -1,4 +1,4 @@
-from pdtypes import Choice, Score
+from pdprogram.pdtypes import Choice, Score
 
 
 class Player:
@@ -33,12 +33,3 @@ class Player:
 
     def __str__(self) -> str:
         return f"{self.name} chose {self.choice[1]} resulting in {self.score[1]}"
-
-
-# ===================================================
-
-# newp = Player("PlayerA")
-# newp.choose(Choice.DEFECT)
-# print(Choice.COOPORATE)
-# print(newp.choice)
-# print(newp)
