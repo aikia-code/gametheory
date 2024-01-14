@@ -1,32 +1,52 @@
 from random import choice
 
-from pdplayer import Player
-from pdsession import Session
-from pdtypes import Choice, Score
+# Program library
+from pdprogram.pdplayer import Player
+from pdprogram.pdsession import Session
+from pdprogram.pdtypes import Choice, Score
+
+"""
+GameLoop:
+    - sessions
+    - rounds
+    - get final scores -> dict [player name, player total score]
+    - show scores
+    - run loop
+"""
 
 
-gamechoices = [Choice.COOPORATE, Choice.DEFECT]
+class GameLoop:
+    def __init__(self) -> None:
+        self.sessions = []
 
-pl_A, pl_B = Player("P-A"), Player("P-B")
+    def run(self, rounds: int) -> None:
+        player_a, player_b = Player("Tit for tat"), Player("Random")
 
-session = Session(pl_A, pl_B)
+        session = Session(player_a, player_b)
 
-sessions = []
+        for i in range(rounds):
+            # player A strategy is tit for tat
+            try:
+                if self.sessions[-1].get_player_choice(player_b) == Choice.DEFECT:
+                    player_a.choose(Choice.DEFECT)
+                else:
+                    player_a.choose(Choice.COOPORATE)
+            except IndexError:
+                player_a.choose(Choice.COOPORATE)
 
+            # player B strategy is to randomly choose responses
+            gamechoices = [Choice.COOPORATE, Choice.DEFECT]
 
-for i in range(10):
-    try:
-        if sessions[-1].get_choices(pl_B) == Choice.DEFECT:
-            pl_A.choose(Choice.DEFECT)
-        else:
-            pl_A.choose(Choice.COOPORATE)
-    except IndexError:
-        pl_A.choose(Choice.COOPORATE)
+            player_b.choose(choice(gamechoices))
 
-    pl_B.choose(choice(gamechoices))
+            # session computation
+            session.compute_score()
 
-    session.compute_score()
-    
-    print(session.get_choices())
-    
-    sessions.append(session)
+            # record session data
+            self.sessions.append(session)
+
+    def get_final_scores(self) -> dict:
+        pass
+
+    def show_final_scores(self) -> str:
+        pass
