@@ -1,5 +1,5 @@
 from pdprogram.pdplayer import Player
-from pdprogram.pdtypes import Choice, Score
+from pdprogram.pdsymbols import Choice, Score
 
 
 class Session:

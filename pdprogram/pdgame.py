@@ -3,7 +3,7 @@ from random import choice
 # Program library
 from pdprogram.pdplayer import Player
 from pdprogram.pdsession import Session
-from pdprogram.pdtypes import Choice, Score
+from pdprogram.pdsymbols import Choice, Score
 
 """
 GameLoop:
