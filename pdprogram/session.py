@@ -1,5 +1,5 @@
-from pdprogram.pdplayer import Player
-from pdprogram.pdsymbols import Choice, Score
+from pdprogram.player import Player
+from pdprogram.symbols import Choice, Score
 
 
 class Session:
@@ -11,8 +11,7 @@ class Session:
         self.playerB = playerB
 
     def compute_score(self):
-        """Computes the results of a single session of the game
-        """
+        """Computes the results of a single session of the game"""
         if (
             self.playerA.choice == Choice.COOPORATE
             and self.playerB.choice == Choice.COOPORATE
@@ -52,7 +51,6 @@ class Session:
             return self.playerA.choice
         if name == self.playerB.name:
             return self.playerB.choice
-
 
     def get_score(self, name: str) -> tuple:
         """Returns the exact score of a Player

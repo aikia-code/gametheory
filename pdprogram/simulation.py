@@ -1,9 +1,9 @@
 from random import choice
 
 # Program library
-from pdprogram.pdplayer import Player
-from pdprogram.pdsession import Session
-from pdprogram.pdsymbols import Choice, Score
+from pdprogram.player import Player
+from pdprogram.session import Session
+from pdprogram.symbols import Choice, Score
 
 
 class Simulation:

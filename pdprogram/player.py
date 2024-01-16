@@ -1,4 +1,4 @@
-from pdprogram.pdsymbols import Choice, Score
+from pdprogram.symbols import Choice, Score
 
 
 class Player:
