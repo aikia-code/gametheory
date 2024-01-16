@@ -62,5 +62,5 @@ class Simulation:
             print(sess.get_choice(p2)[2], end=" ")
 
         print("")
-
+        # TODO: display scores
         print(p2, end=" ")
