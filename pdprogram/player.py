@@ -2,13 +2,7 @@ from pdprogram.symbols import Choice, Score
 
 
 class Player:
-    """
-    A representation of a player.
-    They have choice and recognise the result of their choice
-
-    Returns:
-        None: None
-    """
+    """describes a player and provides a state for player object"""
 
     def __init__(self, name: str):
         """Create a player by name"""
@@ -27,9 +21,9 @@ class Player:
         Make a choice to COOPORATE and DEFECT
 
         Args:
-            choice (optional): Accepts Choice.COOPORATE or Choice.DEFECT. Defaults to Choice.COOPORATE.
+            tuple : Accepts Choice.COOPORATE or Choice.DEFECT. Defaults to Choice.COOPORATE.
         """
         self.choice = choice
 
     def __str__(self) -> str:
-        return f"{self.name} chose {self.choice[1]} resulting in {self.score[1]}"
+        return f"{self.name} | {self.choice[1]} | {self.score[1]}"
