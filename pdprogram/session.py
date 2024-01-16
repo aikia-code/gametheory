@@ -35,9 +35,6 @@ class Session:
         ):
             self.playerA.score = self.playerB.score = Score.PUNISH
 
-    def get_players(self):
-        return {"A": self.playerA.name, "B": self.playerB.name}
-
     def get_choice(self, name: str) -> tuple:
         """Returns the exact response of a player
 
@@ -67,4 +64,4 @@ class Session:
             return self.playerB.score
 
     def __str__(self):
-        return f"A: {self.playerA}\nB: {self.playerB}"
+        return f"A > {self.playerA}\nB > {self.playerB}\n"
