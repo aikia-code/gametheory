@@ -1,5 +1,5 @@
-from pdprogram.pdgame import GameLoop
+from pdprogram.simulation import Simulation
 
-PDG = GameLoop()
+PDG = Simulation()
 
-PDG.run(100)
+PDG.main(100)

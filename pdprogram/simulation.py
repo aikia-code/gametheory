@@ -6,8 +6,8 @@ from pdprogram.pdsession import Session
 from pdprogram.pdsymbols import Choice, Score
 
 
-class GameLoop:
-    def run(self, rounds: int) -> None:
+class Simulation:
+    def main(self, rounds: int) -> None:
         sessions = []
 
         p1 = "Tit for tat"
