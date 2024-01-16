@@ -11,6 +11,8 @@ class Session:
         self.playerB = playerB
 
     def compute_score(self):
+        """Computes the results of a single session of the game
+        """
         if (
             self.playerA.choice == Choice.COOPORATE
             and self.playerB.choice == Choice.COOPORATE
@@ -37,7 +39,7 @@ class Session:
     def get_players(self):
         return {"A": self.playerA.name, "B": self.playerB.name}
 
-    def get_player_choice(self, name: str) -> tuple:
+    def get_choice(self, name: str) -> tuple:
         """Returns the exact response of a player
 
         Args:
@@ -51,18 +53,8 @@ class Session:
         if name == self.playerB.name:
             return self.playerB.choice
 
-    def get_choices(self) -> dict:
-        """Returns responses of all players in the session
 
-        Returns:
-            dict: Dictionary object of Player A and Player B response
-        """
-        return {
-            self.playerA.name: self.playerA.choice,
-            self.playerB.name: self.playerB.choice,
-        }
-
-    def get_player_score(self, name: str) -> tuple:
+    def get_score(self, name: str) -> tuple:
         """Returns the exact score of a Player
 
         Args:
@@ -75,17 +67,6 @@ class Session:
             return self.playerA.score
         if name == self.playerB.name:
             return self.playerB.score
-
-    def get_scores(self):
-        """Returns scores of all players in the session
-
-        Returns:
-            dict: Dictionary object of Player A and Player B score
-        """
-        return {
-            self.playerA.name: self.playerA.score,
-            self.playerB.name: self.playerB.score,
-        }
 
     def __str__(self):
         return f"A: {self.playerA}\nB: {self.playerB}"

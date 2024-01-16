@@ -5,15 +5,6 @@ from pdprogram.pdplayer import Player
 from pdprogram.pdsession import Session
 from pdprogram.pdsymbols import Choice, Score
 
-"""
-GameLoop:
-    - sessions
-    - rounds
-    - get final scores -> dict [player name, player total score]
-    - show scores
-    - run loop
-"""
-
 
 class GameLoop:
     def run(self, rounds: int) -> None:
@@ -29,7 +20,7 @@ class GameLoop:
 
             # player A strategy is tit for tat
             try:
-                if sessions[-1].get_player_choice(p2) == Choice.DEFECT:
+                if sessions[-1].get_choice(p2) == Choice.DEFECT:
                     player_a.choose(Choice.DEFECT)
                 else:
                     player_a.choose(Choice.COOPORATE)
@@ -52,12 +43,12 @@ class GameLoop:
         print(p1)
 
         for sess in sessions:
-            print(sess.get_player_choice(p1)[2], end=" ")
+            print(sess.get_choice(p1)[2], end=" ")
 
         print("")
 
         for sess in sessions:
-            print(sess.get_player_choice(p2)[2], end=" ")
+            print(sess.get_choice(p2)[2], end=" ")
 
         print("")
 
