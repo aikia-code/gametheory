@@ -1,14 +1,13 @@
 from random import choice
 
 # Program library
-from pdprogram.player import Player
-from pdprogram.session import Session
-from pdprogram.symbols import Choice, Score
+from dilemma.player import Player
+from dilemma.session import Session
+from dilemma.symbols import Choice, Score
 
 
 class Simulation:
-    def main(self, rounds: int = 200) -> None:
-        
+    def main(rounds: int = 200) -> None:
         # TODO: Simulation info object to store Simulation data like this: sessions list
         sessions = []
 

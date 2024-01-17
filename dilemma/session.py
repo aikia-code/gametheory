@@ -1,5 +1,5 @@
-from pdprogram.player import Player
-from pdprogram.symbols import Choice, Score
+from dilemma.player import Player
+from dilemma.symbols import Choice, Score
 
 
 class Session:
