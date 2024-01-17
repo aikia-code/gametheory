@@ -5,13 +5,13 @@ Static types and constants for Choices, Scores
 
 class Choice:
     """
-    Static choice to COOPORATE or DEFECT
+    Static choice to COOPERATE or DEFECT
 
     Usage:
-        Choice.COOPORATE: Choose to Cooporate in a given session
+        Choice.COOPERATE: Choose to Cooperate in a given session
     """
 
-    COOPORATE = (0, "COOPORATE", "+")
+    COOPERATE = (0, "COOPERATE", "+")
     DEFECT = (1, "DEFECT", "-")
 
 
@@ -27,9 +27,3 @@ class Score:
     REWARD = (3, "REWARD", "R")
     TEMPT = (6, "TEMPT", "T")
     SUCKER = (0, "SUCKER", "S")
-
-
-# ======================================================
-
-# print(Choice.COOPORATE)
-# print(Choice.DEFECT)

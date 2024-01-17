@@ -3,37 +3,37 @@ from dilemma.symbols import Choice, Score
 
 
 class Session:
-    """A game session that computes player scores based on thier choices"""
+    """A game session that computes player scores based on their choices"""
 
-    def __init__(self, playerA: Player, playerB: Player):
+    def __init__(self, player_a: Player, player_b: Player):
         """Process the choices made and compute scores"""
-        self.playerA = playerA
-        self.playerB = playerB
+        self.player_a = player_a
+        self.player_b = player_b
 
     def compute_score(self):
         """Computes the results of a single session of the game"""
         if (
-            self.playerA.choice == Choice.COOPORATE
-            and self.playerB.choice == Choice.COOPORATE
+            self.player_a.choice == Choice.COOPERATE
+            and self.player_b.choice == Choice.COOPERATE
         ):
-            self.playerA.score = self.playerB.score = Score.REWARD
+            self.player_a.score = self.player_b.score = Score.REWARD
         elif (
-            self.playerA.choice == Choice.COOPORATE
-            and self.playerB.choice == Choice.DEFECT
+            self.player_a.choice == Choice.COOPERATE
+            and self.player_b.choice == Choice.DEFECT
         ):
-            self.playerA.score = Score.SUCKER
-            self.playerB.score = Score.TEMPT
+            self.player_a.score = Score.SUCKER
+            self.player_b.score = Score.TEMPT
         elif (
-            self.playerB.choice == Choice.COOPORATE
-            and self.playerA.choice == Choice.DEFECT
+            self.player_b.choice == Choice.COOPERATE
+            and self.player_a.choice == Choice.DEFECT
         ):
-            self.playerB.score = Score.SUCKER
-            self.playerA.score = Score.TEMPT
+            self.player_b.score = Score.SUCKER
+            self.player_a.score = Score.TEMPT
         elif (
-            self.playerA.choice == Choice.DEFECT
-            and self.playerB.choice == Choice.DEFECT
+            self.player_a.choice == Choice.DEFECT
+            and self.player_b.choice == Choice.DEFECT
         ):
-            self.playerA.score = self.playerB.score = Score.PUNISH
+            self.player_a.score = self.player_b.score = Score.PUNISH
 
     def get_choice(self, name: str) -> tuple:
         """Returns the exact response of a player
@@ -44,10 +44,10 @@ class Session:
         Returns:
             tuple: Choice tuple of player
         """
-        if name == self.playerA.name:
-            return self.playerA.choice
-        if name == self.playerB.name:
-            return self.playerB.choice
+        if name == self.player_a.name:
+            return self.player_a.choice
+        if name == self.player_b.name:
+            return self.player_b.choice
 
     def get_score(self, name: str) -> tuple:
         """Returns the exact score of a Player
@@ -58,10 +58,10 @@ class Session:
         Returns:
             tuple: Score tuple of player
         """
-        if name == self.playerA.name:
-            return self.playerA.score
-        if name == self.playerB.name:
-            return self.playerB.score
+        if name == self.player_a.name:
+            return self.player_a.score
+        if name == self.player_b.name:
+            return self.player_b.score
 
     def __str__(self):
-        return f"A > {self.playerA}\nB > {self.playerB}\n"
+        return f"A > {self.player_a}\nB > {self.player_b}\n"

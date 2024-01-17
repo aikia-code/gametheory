@@ -14,7 +14,7 @@ class Simulation:
         p1 = "Tit for tat"
         p2 = "Random"
 
-        for i in range(rounds):
+        for _ in range(rounds):
             player_a, player_b = Player(p1), Player(p2)
 
             session = Session(player_a, player_b)
@@ -23,20 +23,18 @@ class Simulation:
             # BEGIN STRATEGY
 
             # player A strategy is tit for tat
-            # =======================================>
             try:
                 if sessions[-1].get_choice(p2) == Choice.DEFECT:
                     player_a.choose(Choice.DEFECT)
                 else:
-                    player_a.choose(Choice.COOPORATE)
+                    player_a.choose(Choice.COOPERATE)
             except IndexError:
-                player_a.choose(Choice.COOPORATE)
+                player_a.choose(Choice.COOPERATE)
 
             # player B strategy is to randomly choose responses
-            # ========================================>
-            gamechoices = [Choice.COOPORATE, Choice.DEFECT]
+            player_choices = [Choice.COOPERATE, Choice.DEFECT]
 
-            player_b.choose(choice(gamechoices))
+            player_b.choose(choice(player_choices))
 
             # END STRATEGY
 
@@ -49,16 +47,16 @@ class Simulation:
         # print out results for visual
         # TODO: Utility functions to handle pretty printing to console
         # TODO: Utility functions to handle writing results to file
-        # TODO: Simulation info Object designed to only display simualtion outcomes
+        # TODO: Simulation info Object designed to only display simulation outcomes
         print(p1)
 
-        for sess in sessions:
-            print(sess.get_choice(p1)[2], end=" ")
+        for session in sessions:
+            print(session.get_choice(p1)[2], end=" ")
 
         print("")
 
-        for sess in sessions:
-            print(sess.get_choice(p2)[2], end=" ")
+        for session in sessions:
+            print(session.get_choice(p2)[2], end=" ")
 
         print("")
         # TODO: display scores

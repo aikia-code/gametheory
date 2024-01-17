@@ -8,7 +8,7 @@ class Player:
         """Create a player by name"""
 
         """Choice"""
-        self.choice = Choice.COOPORATE
+        self.choice = Choice.COOPERATE
 
         """Score"""
         self.score = Score.SUCKER
@@ -16,12 +16,12 @@ class Player:
         """Name"""
         self.name = name
 
-    def choose(self, choice=Choice.COOPORATE):
+    def choose(self, choice=Choice.COOPERATE):
         """
-        Make a choice to COOPORATE and DEFECT
+        Make a choice to COOPERATE and DEFECT
 
         Args:
-            tuple : Accepts Choice.COOPORATE or Choice.DEFECT. Defaults to Choice.COOPORATE.
+            tuple : Accepts Choice.COOPERATE or Choice.DEFECT. Defaults to Choice.COOPERATE.
         """
         self.choice = choice
 
