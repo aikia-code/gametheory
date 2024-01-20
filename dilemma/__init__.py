@@ -1,3 +1,3 @@
-from dilemma.simulation import Simulation
+from .simulation import Simulation
 
-Simulation.main(100)
+Simulation.main()
