@@ -1,3 +1,6 @@
+r"""models collection module
+"""
+
 from .symbols import Action, Payoff
 
 
@@ -14,17 +17,25 @@ class Player:
         self.name = name
 
     def respond(self, strategy, opponent=None, history=None):
+        """player response with strategy implemented
+
+        Args:
+            strategy (function): strategy callback
+            opponent (player, optional): opponent to face off with strategy. Defaults to None.
+            history (list[session], optional): history data to incorporate into strategy.
+            Defaults to None.
+        """
         self.action = strategy(history=history, opponent=opponent)
 
     def __str__(self):
-        return f"{self.name} | {self.action[1]} | {self.score[1]}"
+        return f"{self.name} | {self.action[1]} | {self.score}"
 
 
 class Session:
     """A game session that computes player scores based on their choices"""
 
     def __init__(self, names):
-        """Accepts players by name and processes the choices and scores"""
+        """initialise players by name and processes the choices and scores"""
         self.players = (Player(names[0]), Player(names[1]))
 
     def compute_score(self):
@@ -52,51 +63,32 @@ class Session:
         ):
             self.players[0].score = self.players[1].score = Payoff.PUNISH[0]
 
-    def get_choice(self, player):
-        """Returns the exact response of a player
-
-        Args:
-            player (Player): Player object to check response of
-
-        Returns:
-            tuple: Choice tuple of player
-        """
-        if player == self.players[0]:
-            return self.players[0].action
-        if player == self.players[1]:
-            return self.players[1].action
-
-    def get_score(self, player):
-        """Returns the exact score of a Player
-
-        Args:
-            player (Player): Player object to get score of
-
-        Returns:
-            tuple: Score tuple of player
-        """
-        if player == self.players[0]:
-            return self.players[0].score
-        if player == self.players[1]:
-            return self.players[1].score
-
     def __str__(self):
         return f"A > {self.players[0]}\nB > {self.players[1]}\n"
 
 
 class SimulationInfo:
-    def __init__(self) -> None:
+    """represent information from a simulation"""
+
+    def __init__(self):
         self.history = []
 
     def compute_score(self):
+        """computes simulation scores
+
+        Returns:
+            tuple[int, int]: scores of each player
+        """
         score_0 = sum(session.players[0].score for session in self.history)
         score_1 = sum(session.players[1].score for session in self.history)
         return (score_0, score_1)
 
-    def to_table_format(self):  # TODO:
+    def to_table_format(self):
+        """formats simulation info as table. can be displayed on cui"""
         pass
 
-    def to_csv_format(self):  # TODO:
+    def to_csv_format(self):
+        """formats simulation info as a table with comma separated values. can be written to file"""
         pass
 
     def __str__(self):

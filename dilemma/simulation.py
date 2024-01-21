@@ -1,11 +1,22 @@
-from .models import Session, Player, SimulationInfo
-from .symbols import Action, Payoff
+r"""Simulation module
+"""
+
+from .models import Session, SimulationInfo
 from .strategy import random_action, always_cooperate
 
 
 class Simulation:
-    def main(rounds: int = 50) -> None:
-        sim_info = SimulationInfo()
+    """class to setup and run simulation"""
+
+    def __init__(self) -> None:
+        self.info = SimulationInfo()
+
+    def main(self, rounds=50):
+        """Simulation entry point
+
+        Args:
+            rounds (int, optional): number iterations to run the simulation. Defaults to 50.
+        """
 
         for _ in range(rounds):
             session = Session(names=("tit4tat", "rand"))
@@ -16,6 +27,6 @@ class Simulation:
 
             session.compute_score()
 
-            sim_info.history.append(session)
+            self.info.history.append(session)
 
-        print(sim_info)
+        print(self.info)

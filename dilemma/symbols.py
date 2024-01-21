@@ -1,14 +1,13 @@
-r"""
-Symbols for Choices, Payoffs
+r"""symbols collection module
 """
 
 
 class Action:
     """
-    Static choice to COOPERATE or DEFECT
+    actions to COOPERATE or DEFECT
 
     Usage:
-        Choice.COOPERATE: Choose to Cooperate in a given session
+        Action.COOPERATE: Choose to Cooperate in a given session
     """
 
     COOPERATE = (0, "COOPERATE", "+")

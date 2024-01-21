@@ -1,3 +1,7 @@
+r"""module initialization
+"""
+
 from .simulation import Simulation
 
-Simulation.main()
+sim = Simulation()
+sim.main()
