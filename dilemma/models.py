@@ -1,67 +1,58 @@
-from .symbols import Choice, Score
+from .symbols import Action, Payoff
 
 
 class Player:
     """describes a player and provides a state for player object"""
 
-    def __init__(self, name: str):
+    def __init__(self, name):
         """Create a player by name"""
 
-        """Choice"""
-        self.choice = Choice.COOPERATE
+        self.action = Action.COOPERATE
 
-        """Score"""
-        self.score = Score.SUCKER
+        self.score = Payoff.SUCKER[0]
 
-        """Name"""
         self.name = name
 
-    def choose(self, choice=Choice.COOPERATE):
-        """
-        Make a choice to COOPERATE and DEFECT
+    def respond(self, strategy, opponent=None, history=None):
+        self.action = strategy(history=history, opponent=opponent)
 
-        Args:
-            tuple : Accepts Choice.COOPERATE or Choice.DEFECT. Defaults to Choice.COOPERATE.
-        """
-        self.choice = choice
-
-    def __str__(self) -> str:
-        return f"{self.name} | {self.choice[1]} | {self.score[1]}"
+    def __str__(self):
+        return f"{self.name} | {self.action[1]} | {self.score[1]}"
 
 
 class Session:
     """A game session that computes player scores based on their choices"""
 
-    def __init__(self, names: tuple = (str, str)):
+    def __init__(self, names):
         """Accepts players by name and processes the choices and scores"""
         self.players = (Player(names[0]), Player(names[1]))
 
-    def compute_score(self) -> None:
+    def compute_score(self):
         """Computes scores of players"""
         if (
-            self.players[0].choice == Choice.COOPERATE
-            and self.players[1].choice == Choice.COOPERATE
+            self.players[0].action == Action.COOPERATE
+            and self.players[1].action == Action.COOPERATE
         ):
-            self.players[0].score = self.players[1].score = Score.REWARD
+            self.players[0].score = self.players[1].score = Payoff.REWARD[0]
         elif (
-            self.players[0].choice == Choice.COOPERATE
-            and self.players[1].choice == Choice.DEFECT
+            self.players[0].action == Action.COOPERATE
+            and self.players[1].action == Action.DEFECT
         ):
-            self.players[0].score = Score.SUCKER
-            self.players[1].score = Score.TEMPT
+            self.players[0].score = Payoff.SUCKER[0]
+            self.players[1].score = Payoff.TEMPT[0]
         elif (
-            self.players[1].choice == Choice.COOPERATE
-            and self.players[0].choice == Choice.DEFECT
+            self.players[1].action == Action.COOPERATE
+            and self.players[0].action == Action.DEFECT
         ):
-            self.players[1].score = Score.SUCKER
-            self.players[0].score = Score.TEMPT
+            self.players[1].score = Payoff.SUCKER[0]
+            self.players[0].score = Payoff.TEMPT[0]
         elif (
-            self.players[0].choice == Choice.DEFECT
-            and self.players[1].choice == Choice.DEFECT
+            self.players[0].action == Action.DEFECT
+            and self.players[1].action == Action.DEFECT
         ):
-            self.players[0].score = self.players[1].score = Score.PUNISH
+            self.players[0].score = self.players[1].score = Payoff.PUNISH[0]
 
-    def get_choice(self, player: Player) -> tuple:
+    def get_choice(self, player):
         """Returns the exact response of a player
 
         Args:
@@ -71,11 +62,11 @@ class Session:
             tuple: Choice tuple of player
         """
         if player == self.players[0]:
-            return self.players[0].choice
+            return self.players[0].action
         if player == self.players[1]:
-            return self.players[1].choice
+            return self.players[1].action
 
-    def get_score(self, player: Player) -> tuple:
+    def get_score(self, player):
         """Returns the exact score of a Player
 
         Args:
@@ -89,28 +80,25 @@ class Session:
         if player == self.players[1]:
             return self.players[1].score
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"A > {self.players[0]}\nB > {self.players[1]}\n"
 
 
 class SimulationInfo:
-    def __init__(self, player_names: tuple = (str, str)) -> None:
-        self.names = player_names
-        self.sessions = []
+    def __init__(self) -> None:
+        self.history = []
 
-    def __str__(self) -> str:
-        sim_string = self.names[0] + "\n"
+    def compute_score(self):
+        score_0 = sum(session.players[0].score for session in self.history)
+        score_1 = sum(session.players[1].score for session in self.history)
+        return (score_0, score_1)
 
-        for session in self.sessions:
-            sim_string += session.players[0].choice[2]
-
-        # TODO: display scores
-        sim_string += "\n"
-
-        for session in self.sessions:
-            sim_string += session.players[1].choice[2]
-
-        sim_string += "\n"
-        sim_string += self.names[1] + "\n"
-
+    def __str__(self):
+        total_scores = self.compute_score()
+        sim_string = f"{self.history[0].players[0].name}\n"
+        sim_string += "".join(session.players[0].action[2] for session in self.history)
+        sim_string += f" {total_scores[0]}\n"
+        sim_string += "".join(session.players[1].action[2] for session in self.history)
+        sim_string += f" {total_scores[1]}\n"
+        sim_string += f"{self.history[0].players[1].name}\n"
         return sim_string

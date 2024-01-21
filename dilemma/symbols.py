@@ -1,9 +1,9 @@
 r"""
-Static types and constants for Choices, Scores
+Symbols for Choices, Payoffs
 """
 
 
-class Choice:
+class Action:
     """
     Static choice to COOPERATE or DEFECT
 
@@ -15,15 +15,15 @@ class Choice:
     DEFECT = (1, "DEFECT", "-")
 
 
-class Score:
+class Payoff:
     """
-    Static scores for PUNISH, REWARD, TEMPT, or SUCKER
+    Payoff symbols for PUNISH, REWARD, TEMPT, or SUCKER
 
     Usage:
-        Score.PUNISH: Award a score of PUNISH
+        Payoff.PUNISH: Awards a payoff of PUNISH
     """
 
     PUNISH = (1, "PUNISH", "P")
     REWARD = (3, "REWARD", "R")
-    TEMPT = (6, "TEMPT", "T")
+    TEMPT = (5, "TEMPT", "T")
     SUCKER = (0, "SUCKER", "S")
