@@ -93,10 +93,10 @@ class SimulationInfo:
         score_1 = sum(session.players[1].score for session in self.history)
         return (score_0, score_1)
 
-    def to_table(self):  # TODO:
+    def to_table_format(self):  # TODO:
         pass
 
-    def to_csv(self):  # TODO:
+    def to_csv_format(self):  # TODO:
         pass
 
     def __str__(self):
