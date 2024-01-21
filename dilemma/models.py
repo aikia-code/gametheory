@@ -93,6 +93,12 @@ class SimulationInfo:
         score_1 = sum(session.players[1].score for session in self.history)
         return (score_0, score_1)
 
+    def to_table(self):  # TODO:
+        pass
+
+    def to_csv(self):  # TODO:
+        pass
+
     def __str__(self):
         total_scores = self.compute_score()
         sim_string = f"{self.history[0].players[0].name}\n"

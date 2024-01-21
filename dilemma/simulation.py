@@ -18,6 +18,4 @@ class Simulation:
 
             sim_info.history.append(session)
 
-        # TODO: Utility functions to handle writing results to file table[]
-
         print(sim_info)
