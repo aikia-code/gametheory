@@ -5,7 +5,7 @@ from .models import Session, SimulationInfo
 from .strategy import random_action, always_cooperate
 
 
-def main(rounds=50):
+def main(rounds=100):
     """Simulation entry point
 
     Args:
