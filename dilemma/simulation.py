@@ -5,28 +5,23 @@ from .models import Session, SimulationInfo
 from .strategy import random_action, always_cooperate
 
 
-class Simulation:
-    """class to setup and run simulation"""
+def main(rounds=50):
+    """Simulation entry point
 
-    def __init__(self) -> None:
-        self.info = SimulationInfo()
+    Args:
+        rounds (int, optional): number iterations to run the simulation. Defaults to 50.
+    """
+    info = SimulationInfo()
 
-    def main(self, rounds=50):
-        """Simulation entry point
+    for _ in range(rounds):
+        session = Session(names=("tit4tat", "rand"))
 
-        Args:
-            rounds (int, optional): number iterations to run the simulation. Defaults to 50.
-        """
+        session.players[0].respond(strategy=always_cooperate)
 
-        for _ in range(rounds):
-            session = Session(names=("tit4tat", "rand"))
+        session.players[1].respond(strategy=random_action)
 
-            session.players[0].respond(strategy=always_cooperate)
+        session.compute_score()
 
-            session.players[1].respond(strategy=random_action)
+        info.history.append(session)
 
-            session.compute_score()
-
-            self.info.history.append(session)
-
-        print(self.info)
+    print(info)
