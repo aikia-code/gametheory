@@ -1,4 +1,4 @@
-r"""models collection module
+r"""collection of models for the dilemma simulation
 """
 
 from .symbols import Action, Payoff
@@ -16,16 +16,13 @@ class Player:
 
         self.name = name
 
-    def respond(self, strategy, opponent=None, history=None):
+    def respond(self, strategy=None):
         """player response with strategy implemented
 
         Args:
-            strategy (function): strategy callback
-            opponent (player, optional): opponent to face off with strategy. Defaults to None.
-            history (list[session], optional): history data to incorporate into strategy.
-            Defaults to None.
+            strategy (strategy): strategy
         """
-        self.action = strategy(history=history, opponent=opponent)
+        self.action = strategy.run()
 
     def __str__(self):
         return f"{self.name} | {self.action[1]} | {self.score}"
@@ -38,7 +35,7 @@ class Session:
         """initialise players by name and processes the choices and scores"""
         self.players = (Player(names[0]), Player(names[1]))
 
-    def compute_score(self):
+    def compute_payoffs(self):
         """Computes scores of players"""
         if (
             self.players[0].action == Action.COOPERATE
@@ -100,3 +97,14 @@ class SimulationInfo:
         sim_string += f" {total_scores[1]}\n"
         sim_string += f"{self.history[0].players[1].name}\n"
         return sim_string
+
+
+class Strategy:
+    def __init__(self):
+        ...
+
+    def run(self):
+        ...
+
+    def create(self, opponent, history):
+        ...

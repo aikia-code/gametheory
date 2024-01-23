@@ -2,10 +2,10 @@ r"""Simulation module
 """
 
 from .models import Session, SimulationInfo
-from .strategy import random_action, always_cooperate
+from .strategies import always_cooperate, random_defect
 
 
-def main(rounds=50):
+def main(rounds=100):
     """Simulation entry point
 
     Args:
@@ -18,9 +18,9 @@ def main(rounds=50):
 
         session.players[0].respond(strategy=always_cooperate)
 
-        session.players[1].respond(strategy=random_action)
+        session.players[1].respond(strategy=random_defect)
 
-        session.compute_score()
+        session.compute_payoffs()
 
         info.history.append(session)
 
