@@ -8,10 +8,6 @@ from .symbols import Action
 from .models import Strategy
 
 
-# -----------------------------------------------------
-# collection
-
-
 class AlwaysCooperate(Strategy):
     """Always Cooperate strategy
 
