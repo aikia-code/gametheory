@@ -1,14 +1,45 @@
-# Game theory collection
+# Game theory simulations
 
-The scenario set is there is a pile of coins to be collected. Each player has to make a choice against his opponent to receive coins. There is a total of 6 coins to be had in a given session or nothing. Players can only **COOPERATE** or **DEFECT**. Choices can only result in PUNISHMENT, REWARD, TEMPTATION, and **SUCKER**'S PAYOFF.Rules are as follows:
+Interactive Platform to simulate and engage with game theory
 
-* if both players **COOPERATE** each get a **REWARD** amounting to 3 coins
-* if one player **DEFECT** and the other **COOPERATE** player one gets 6 coins as **TEMPTATION** and the other gets nothing for being a **SUCKER**
-* if both **DEFECT** then each player gets a coin as **PUNISHMENT**
+Game theory is a key tool for analyzing strategic interactions and decision-making across diverse areas. It enhances our comprehension of human behavior in real-world situations, encompassing both cooperation and competition.
 
-|CHOICE A|CHOICE B|SCORE A|SCORE B|
-|--|--|--|--|
-|**COOPERATE**|**COOPERATE**|3|3|
-|**DEFECT**|**COOPERATE**|5|0|
-|**COOPERATE**|**DEFECT**|0|5|
-|**DEFECT**|**DEFECT**|1|1|
+<!-- GETTING STARTED -->
+## Getting Started
+
+### Prerequisites
+
+### Installation
+
+<!-- USAGE EXAMPLES -->
+
+## Usage
+
+<!-- ROADMAP -->
+## Roadmap
+
+- [ ] Add Interactive UI
+- [ ] Add Changelog
+- [ ] Deploy Python package
+- [ ] Add Additional Strategies
+
+See the [open issues]() for a full list of proposed features (and known issues).
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See LICENSE
