@@ -1,14 +1,30 @@
-# Game theory collection
+# "Game theory" simulations
 
-The scenario set is there is a pile of coins to be collected. Each player has to make a choice against his opponent to receive coins. There is a total of 6 coins to be had in a given session or nothing. Players can only **COOPERATE** or **DEFECT**. Choices can only result in PUNISHMENT, REWARD, TEMPTATION, and **SUCKER**'S PAYOFF.Rules are as follows:
+Interactive Platform to simulate and engage with game theory
 
-* if both players **COOPERATE** each get a **REWARD** amounting to 3 coins
-* if one player **DEFECT** and the other **COOPERATE** player one gets 6 coins as **TEMPTATION** and the other gets nothing for being a **SUCKER**
-* if both **DEFECT** then each player gets a coin as **PUNISHMENT**
+Game theory is a key tool for analyzing strategic interactions and decision-making across diverse areas. It enhances our comprehension of human behavior in real-world situations, encompassing both cooperation and competition.
 
-|CHOICE A|CHOICE B|SCORE A|SCORE B|
-|--|--|--|--|
-|**COOPERATE**|**COOPERATE**|3|3|
-|**DEFECT**|**COOPERATE**|5|0|
-|**COOPERATE**|**DEFECT**|0|5|
-|**DEFECT**|**DEFECT**|1|1|
+Inspired by [Robert Axelrod's 1984 The Evolution of Cooperation](https://www.researchgate.net/publication/316766066_Robert_Axelrod's_1984_The_Evolution_of_Cooperation) and [Veritasium's take on the topic](https://youtu.be/mScpHTIi-kM?si=15H8lTjRfC2YoQHG)
+
+<!-- USAGE EXAMPLES -->
+
+## In Action
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+The best way to contribute is to fork the repo and create a pull request.
+
+1. Fork the Project
+2. Create your "Feature" Branch
+3. Commit your Changes
+4. Push to the Branch
+5. Open a Pull Request
+
+<!-- LICENSE -->
+## License
+
+MIT LICENSE
+
+---
+GitHub [@prosperokay](https://github.com/ProsperoKay)
