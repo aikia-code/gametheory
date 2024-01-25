@@ -80,14 +80,6 @@ class SimulationInfo:
         score_1 = sum(session.players[1].score for session in self.history)
         return (score_0, score_1)
 
-    def to_table_format(self):
-        """formats simulation info as table. can be displayed on cui"""
-        pass
-
-    def to_csv_format(self):
-        """formats simulation info as a table with comma separated values. can be written to file"""
-        pass
-
     def __str__(self):
         total_scores = self.compute_score()
         sim_string = f"{self.history[0].players[0].name}\n"
@@ -100,11 +92,18 @@ class SimulationInfo:
 
 
 class Strategy:
+    """Supper class for strategies"""
+
     def __init__(self):
-        ...
+        self.player_index = None
+        self.session_history = None
 
     def run(self):
-        ...
+        """returns action type"""
+        raise NotImplementedError("(method)run: -> [Action.*] must be implemented")
 
-    def create(self, opponent, history):
-        ...
+    def create(self, player_index, session_history):
+        """accepts and initializes player_index and history attribute"""
+        self.player_index = player_index
+        self.session_history = session_history
+        return self
