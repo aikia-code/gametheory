@@ -10,7 +10,7 @@ class Player:
     def __init__(self, name):
         """Create a player by name"""
 
-        self.action = Action.COOPERATE
+        self.action = Action.DEFECT
 
         self.score = Payoff.SUCKER[0]
 
