@@ -1,7 +1,11 @@
 r"""collection of models for the dilemma simulation
 """
 
-from .symbols import Action, Payoff
+# Actions
+from .symbols import COOPERATE, DEFECT
+
+# Payoffs
+from .symbols import PUNISH, REWARD, TEMPT, SUCKER
 
 
 class Player:
@@ -10,9 +14,9 @@ class Player:
     def __init__(self, name):
         """Create a player by name"""
 
-        self.action = Action.DEFECT
+        self.action = DEFECT
 
-        self.score = Payoff.SUCKER[0]
+        self.score = SUCKER[0]
 
         self.name = name
 
@@ -37,28 +41,16 @@ class Session:
 
     def compute_payoffs(self):
         """Computes scores of players"""
-        if (
-            self.players[0].action == Action.COOPERATE
-            and self.players[1].action == Action.COOPERATE
-        ):
-            self.players[0].score = self.players[1].score = Payoff.REWARD[0]
-        elif (
-            self.players[0].action == Action.COOPERATE
-            and self.players[1].action == Action.DEFECT
-        ):
-            self.players[0].score = Payoff.SUCKER[0]
-            self.players[1].score = Payoff.TEMPT[0]
-        elif (
-            self.players[1].action == Action.COOPERATE
-            and self.players[0].action == Action.DEFECT
-        ):
-            self.players[1].score = Payoff.SUCKER[0]
-            self.players[0].score = Payoff.TEMPT[0]
-        elif (
-            self.players[0].action == Action.DEFECT
-            and self.players[1].action == Action.DEFECT
-        ):
-            self.players[0].score = self.players[1].score = Payoff.PUNISH[0]
+        if self.players[0].action == COOPERATE and self.players[1].action == COOPERATE:
+            self.players[0].score = self.players[1].score = REWARD[0]
+        elif self.players[0].action == COOPERATE and self.players[1].action == DEFECT:
+            self.players[0].score = SUCKER[0]
+            self.players[1].score = TEMPT[0]
+        elif self.players[1].action == COOPERATE and self.players[0].action == DEFECT:
+            self.players[1].score = SUCKER[0]
+            self.players[0].score = TEMPT[0]
+        elif self.players[0].action == DEFECT and self.players[1].action == DEFECT:
+            self.players[0].score = self.players[1].score = PUNISH[0]
 
     def __str__(self):
         return f"A > {self.players[0]}\nB > {self.players[1]}\n"

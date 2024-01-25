@@ -4,7 +4,7 @@ r"""A collection of available strategies for simulation
 from random import choice
 
 # standard simulation imports
-from .symbols import Action
+from .symbols import COOPERATE, DEFECT
 from .models import Strategy
 
 
@@ -19,7 +19,7 @@ class AlwaysCooperate(Strategy):
     """
 
     def run(self):
-        return Action.COOPERATE
+        return COOPERATE
 
 
 class AlwaysDefect(Strategy):
@@ -29,7 +29,7 @@ class AlwaysDefect(Strategy):
     """
 
     def run(self):
-        return Action.DEFECT
+        return DEFECT
 
 
 class RandomDefect(Strategy):
@@ -39,7 +39,7 @@ class RandomDefect(Strategy):
     """
 
     def run(self):
-        player_choices = [Action.COOPERATE, Action.DEFECT]
+        player_choices = [COOPERATE, DEFECT]
 
         return choice(player_choices)
 
