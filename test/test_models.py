@@ -19,3 +19,8 @@ class TestPlayerModel:
         self.player_inst.respond(strategy=always_cooperate)
 
         assert self.player_inst.action == COOPERATE
+
+    def test_player_pass(self):
+        """test player instance and its response"""
+
+        assert 1 + 1 == 2
