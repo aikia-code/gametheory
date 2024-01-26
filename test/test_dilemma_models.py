@@ -3,7 +3,7 @@
 from dilemma.models import Player, Session
 from dilemma.strategies import always_cooperate, always_defect
 from dilemma.symbols import COOPERATE, DEFECT
-from dilemma.symbols import TEMPT, REWARD, SUCKER, PUNISH
+from dilemma.symbols import TEMPT, SUCKER
 
 
 class TestDilemmaModels:
