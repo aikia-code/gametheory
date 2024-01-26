@@ -53,7 +53,7 @@ class Session:
             self.players[0].score = self.players[1].score = PUNISH[0]
 
     def __str__(self):
-        return f"A > {self.players[0]}\nB > {self.players[1]}\n"
+        return f"1 | {self.players[0]}\n2 | {self.players[1]}\n"
 
 
 class SimulationInfo:
