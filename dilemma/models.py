@@ -122,7 +122,7 @@ class Simulation:
         score2 = str(self.get_total_score(2))
 
         sim_string = f"{slot1.center(len(slot1)+2)}|{slot2.center(len(slot2)+2)}\n"
-        sim_string += f"{score1.center(len(slot1)+2)}|{score2.center(len(slot2)+2)}\n"
+        sim_string += f"{score1.center(len(slot1)+2)}|{score2.center(len(slot2)+2)}"
         return sim_string
 
 
