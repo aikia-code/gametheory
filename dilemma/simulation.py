@@ -1,27 +1,30 @@
-r"""Simulation module
+r"""Main Simulation module containing all relevant actions for the
+    program
 """
 
-from .models import Session, SimulationInfo
-from .strategies import always_cooperate, random_defect
+from .models import Session, Simulation
+from .strategies import get_strategy_name
 
 
-def main(rounds=100):
-    """Simulation entry point
+def simulate_strategies(strategy1=None, strategy2=None, rounds=1):
+    """run simulation by strategies
 
-    Args:
-        rounds (int, optional): number iterations to run the simulation. Defaults to 50.
+    Return:
+        - (simulation): object containing all simulation information
     """
-    info = SimulationInfo()
+    simulation = Simulation()
 
     for _ in range(rounds):
-        session = Session(names=("tit4tat", "rand"))
+        session = Session(
+            names=(get_strategy_name(strategy1), get_strategy_name(strategy2))
+        )
 
-        session.players[0].respond(strategy=always_cooperate)
+        session.players[0].respond(strategy=strategy1)
 
-        session.players[1].respond(strategy=random_defect)
+        session.players[1].respond(strategy=strategy2)
 
         session.compute_payoffs()
 
-        info.history.append(session)
+        simulation.history.append(session)
 
-    print(info)
+    return simulation

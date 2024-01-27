@@ -1,6 +1,10 @@
 r"""collection of models for the dilemma simulation
 """
 
+# python statistics module
+from statistics import mean, median, mode
+
+
 # Actions
 from .symbols import COOPERATE, DEFECT
 
@@ -62,24 +66,63 @@ class Simulation:
     def __init__(self):
         self.history = []
 
-    def compute_score(self):
-        """computes simulation scores
+    def get_total_score(self, slot_num=1 | 2):
+        """compute total scores of either player
 
         Returns:
-            tuple[int, int]: scores of each player
+            int: total score of player
         """
-        score_0 = sum(session.players[0].score for session in self.history)
-        score_1 = sum(session.players[1].score for session in self.history)
-        return (score_0, score_1)
+        if slot_num < 1 or slot_num > 2:
+            raise ValueError
+        slot1 = sum(session.players[0].score for session in self.history)
+        slot2 = sum(session.players[1].score for session in self.history)
+        return slot1 if slot_num == 1 else slot2
+
+    def get_average_score(self, slot_num=1 | 2):
+        """compute average score of either player
+
+        Returns:
+            int: average score of player
+        """
+        if slot_num < 1 or slot_num > 2:
+            raise ValueError
+        slot1 = mean(session.players[0].score for session in self.history)
+        slot2 = mean(session.players[1].score for session in self.history)
+        return slot1 if slot_num == 1 else slot2
+
+    def get_mode_score(self, slot_num=1 | 2):
+        """compute mode score of either player
+
+        Returns:
+            int: mode score of player
+        """
+        if slot_num < 1 or slot_num > 2:
+            raise ValueError
+        slot1 = mode(session.players[0].score for session in self.history)
+        slot2 = mode(session.players[1].score for session in self.history)
+        return slot1 if slot_num == 1 else slot2
+
+    def get_slot_name(self, slot_num=1 | 2) -> str:
+        """compute mode score of either player
+
+        Returns:
+            str: name of player
+        """
+        if slot_num < 1 or slot_num > 2:
+            raise ValueError
+        slot1 = self.history[0].players[0].name
+        slot2 = self.history[0].players[1].name
+        return slot1 if slot_num == 1 else slot2
 
     def __str__(self):
-        total_scores = self.compute_score()
-        sim_string = f"{self.history[0].players[0].name}\n"
-        sim_string += "".join(session.players[0].action[2] for session in self.history)
-        sim_string += f" {total_scores[0]}\n"
-        sim_string += "".join(session.players[1].action[2] for session in self.history)
-        sim_string += f" {total_scores[1]}\n"
-        sim_string += f"{self.history[0].players[1].name}\n"
+        sim_string = ""
+        slot1 = self.get_slot_name(1)
+        slot2 = self.get_slot_name(2)
+        score1 = str(self.get_total_score(1))
+        score2 = str(self.get_total_score(2))
+
+        sim_string = f"{slot1.center(len(slot1)+2)}|{slot2.center(len(slot2)+2)}\n"
+        sim_string += f"{score1.center(len(slot1)+2)}|{score2.center(len(slot2)+2)}\n"
         return sim_string
 
 

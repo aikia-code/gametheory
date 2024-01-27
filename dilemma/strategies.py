@@ -45,7 +45,24 @@ class RandomDefect(Strategy):
 
 
 # -----------------------------------------------------
+# helper
+
+
+def get_strategy_name(strategy):
+    """return the name of the strategy
+
+    Args:
+        strategy (strategy): strategy object
+
+    Returns:
+        str: name of strategy
+    """
+    return strategy.__doc__.split(sep="\n")[0]
+
+
+# -----------------------------------------------------
 # exports
+
 
 always_cooperate = AlwaysCooperate()
 always_defect = AlwaysDefect()
