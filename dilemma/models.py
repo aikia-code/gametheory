@@ -86,8 +86,8 @@ class Simulation:
         """
         if slot_num < 1 or slot_num > 2:
             raise ValueError
-        slot1 = mean(session.players[0].score for session in self.history)
-        slot2 = mean(session.players[1].score for session in self.history)
+        slot1 = mean([session.players[0].score for session in self.history])
+        slot2 = mean([session.players[1].score for session in self.history])
         return slot1 if slot_num == 1 else slot2
 
     def get_mode_score(self, slot_num=1 | 2):
@@ -98,8 +98,8 @@ class Simulation:
         """
         if slot_num < 1 or slot_num > 2:
             raise ValueError
-        slot1 = mode(session.players[0].score for session in self.history)
-        slot2 = mode(session.players[1].score for session in self.history)
+        slot1 = mode([session.players[0].score for session in self.history])
+        slot2 = mode([session.players[1].score for session in self.history])
         return slot1 if slot_num == 1 else slot2
 
     def get_slot_name(self, slot_num=1 | 2) -> str:
