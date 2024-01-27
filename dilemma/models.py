@@ -56,7 +56,7 @@ class Session:
         return f"1 | {self.players[0]}\n2 | {self.players[1]}\n"
 
 
-class SimulationInfo:
+class Simulation:
     """represent information from a simulation"""
 
     def __init__(self):

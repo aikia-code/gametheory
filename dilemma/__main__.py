@@ -1,6 +1,6 @@
 r"""module entry point
 """
 
-from .simulation import main
+from .simulation import simulate_strategies
 
-main()
+simulate_strategies()
