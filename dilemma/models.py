@@ -2,7 +2,7 @@ r"""collection of models for the dilemma simulation
 """
 
 # python statistics module
-from statistics import mean, median, mode
+from statistics import mean, mode
 
 
 # Actions
