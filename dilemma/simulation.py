@@ -1,33 +1,97 @@
-r"""Main Simulation module containing all relevant actions for the
-    program
-"""
+r"""Simulation module for main subprocesses"""
 
-from .models import Session, Simulation
-from .strategies import get_strategy_name
+from .utils import simulate_strategies, update_statistics, summarize_statistics
+from .strategies import always_cooperate, always_defect, random_defect
+
+DEFAULT_ROUNDS = 200
 
 
-def simulate_strategies(slot1=None, slot2=None, rounds=1) -> Simulation:
-    """run simulation by strategies
+def process_run_simulation():
+    """sub process for full simulation"""
 
-    Return:
-        - (simulation): object containing all simulation information
-    """
-    if slot1 is None or slot2 is None:
-        raise ValueError("Provide two-set of strategies")
+    always_cooperate_statistics = {"total": [], "average": [], "mode": []}
+    always_defect_statistics = {"total": [], "average": [], "mode": []}
+    random_defect_statistics = {"total": [], "average": [], "mode": []}
 
-    simulation = Simulation()
+    # always cooperate | always cooperate
+    simulation = simulate_strategies(
+        slot1=always_cooperate, slot2=always_cooperate, rounds=DEFAULT_ROUNDS
+    )
 
-    for _ in range(rounds):
-        session = Session(
-            names=(get_strategy_name(slot1), get_strategy_name(slot2))
-        )
+    always_cooperate_statistics = update_statistics(
+        always_cooperate_statistics, simulation, 1
+    )
+    always_cooperate_statistics = update_statistics(
+        always_cooperate_statistics, simulation, 2
+    )
 
-        session.players[0].respond(strategy=slot1)
+    # always cooperate | always defect
+    simulation = simulate_strategies(
+        slot1=always_cooperate, slot2=always_defect, rounds=DEFAULT_ROUNDS
+    )
 
-        session.players[1].respond(strategy=slot2)
+    always_cooperate_statistics = update_statistics(
+        always_cooperate_statistics, simulation, 1
+    )
+    always_defect_statistics = update_statistics(
+        always_defect_statistics, simulation, 2
+    )
 
-        session.compute_payoffs()
+    # always cooperate | random defect
+    simulation = simulate_strategies(
+        slot1=always_cooperate, slot2=random_defect, rounds=DEFAULT_ROUNDS
+    )
 
-        simulation.history.append(session)
+    always_cooperate_statistics = update_statistics(
+        always_cooperate_statistics, simulation, 1
+    )
+    random_defect_statistics = update_statistics(
+        random_defect_statistics, simulation, 2
+    )
 
-    return simulation
+    # always defect | always defect
+    simulation = simulate_strategies(
+        slot1=always_defect, slot2=always_defect, rounds=DEFAULT_ROUNDS
+    )
+
+    always_defect_statistics = update_statistics(
+        always_defect_statistics, simulation, 1
+    )
+    always_defect_statistics = update_statistics(
+        always_defect_statistics, simulation, 2
+    )
+
+    # always defect | random defect
+    simulation = simulate_strategies(
+        slot1=always_defect, slot2=random_defect, rounds=DEFAULT_ROUNDS
+    )
+
+    always_defect_statistics = update_statistics(
+        always_defect_statistics, simulation, 1
+    )
+    random_defect_statistics = update_statistics(
+        random_defect_statistics, simulation, 2
+    )
+
+    # random defect | random defect
+    simulation = simulate_strategies(
+        slot1=random_defect, slot2=random_defect, rounds=DEFAULT_ROUNDS
+    )
+
+    random_defect_statistics = update_statistics(
+        random_defect_statistics, simulation, 1
+    )
+    random_defect_statistics = update_statistics(
+        random_defect_statistics, simulation, 2
+    )
+
+    # summarize
+    # -------------------------------
+
+    always_cooperate_statistics = summarize_statistics(always_cooperate_statistics)
+    always_defect_statistics = summarize_statistics(always_defect_statistics)
+    random_defect_statistics = summarize_statistics(random_defect_statistics)
+
+    print(always_cooperate_statistics)
+    print(always_defect_statistics)
+    print(random_defect_statistics)
