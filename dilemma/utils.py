@@ -83,3 +83,33 @@ def summarize_statistics(initial_statistics) -> dict:
     initial_statistics["mode"] = mode(initial_statistics["mode"])
 
     return initial_statistics
+
+
+def tabulate_summary(strategy=None, statistics=None):
+    """print summary table lines
+
+    Args:
+        strategy (strategy, optional): strategy object. Defaults to None.
+        statistics (dict, optional): dictionary of simulation strategy statistics. Defaults to None.
+    """
+    if strategy is None or statistics is None:
+        print(
+            "strategy".ljust(30),
+            "total".center(10),
+            "average".center(10),
+            "mode".center(10),
+            sep="",
+        )
+        return
+    name_string = str(get_strategy_name(strategy))
+    total_string = str(statistics["total"])
+    average_string = str(round(statistics["average"], 3))
+    mode_string = str(statistics["mode"])
+
+    print(
+        name_string.ljust(30),
+        total_string.center(10),
+        average_string.center(10),
+        mode_string.center(10),
+        sep="",
+    )
