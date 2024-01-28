@@ -8,7 +8,11 @@ Inspired by [Robert Axelrod's 1984 The Evolution of Cooperation](https://www.res
 
 <!-- USAGE EXAMPLES -->
 
-## In Action
+## Usage
+
+1. clone repo with `git clone https://github.com/ProsperoKay/gametheory.git`
+2. run `dilemma` with `python -m dilemma`
+3. play around
 
 <!-- CONTRIBUTING -->
 ## Contributing
