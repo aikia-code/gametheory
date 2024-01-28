@@ -40,9 +40,6 @@ while True:
         process_run_simulation()
         break
 
-    elif user_choice in ["b", "B", "2"]:
+    if user_choice in ["b", "B", "2"]:
         print("Try again!")
         break
-
-    else:
-        continue
