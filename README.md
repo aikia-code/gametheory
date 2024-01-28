@@ -28,7 +28,7 @@ The best way to contribute is to fork the repo and create a pull request.
 <!-- LICENSE -->
 ## License
 
-MIT LICENSE
+MIT
 
 ---
 GitHub [@prosperokay](https://github.com/ProsperoKay)
