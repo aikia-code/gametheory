@@ -4,8 +4,12 @@ from dilemma.models import Player, Session
 from dilemma.strategies import always_cooperate, always_defect
 from dilemma.symbols import COOPERATE, DEFECT
 from dilemma.symbols import TEMPT, SUCKER
-from dilemma.simulation import simulate_strategies
-from dilemma.utils import get_strategy_name
+from dilemma.utils import (
+    get_strategy_name,
+    simulate_strategies,
+    update_statistics,
+    summarize_statistics,
+)
 
 
 class TestDilemmaModels:
@@ -13,6 +17,10 @@ class TestDilemmaModels:
 
     player_inst = Player("test_player")
     session_inst = Session(names=("sand", "bite"))
+
+    simulation = simulate_strategies(
+        slot1=always_defect, slot2=always_cooperate, rounds=100000
+    )
 
     def test_player_response(self):
         """test player instance and its response on a strategy"""
@@ -45,15 +53,28 @@ class TestDilemmaModels:
         """test strategy simulation functions"""
 
         simulation = simulate_strategies(
-            slot1=always_cooperate, slot2=always_defect, rounds=100
+            slot1=always_defect, slot2=always_defect, rounds=10000
         )
 
-        assert simulation.get_total_score(1) == 0
+        assert simulation.get_total_score(1) == 10000
+        assert simulation.get_total_score(2) == 10000
 
-        assert simulation.get_total_score(2) == 500
+        assert simulation.get_average_score(1) == 1
+        assert simulation.get_average_score(2) == 1
 
-        assert simulation.get_average_score(2) == 5
+        assert simulation.get_mode_score(1) == 1
+        assert simulation.get_mode_score(2) == 1
 
-        assert simulation.get_mode_score(2) == 5
+    def test_simulation_utility_functions(self):
+        """test simulation utility functions"""
 
         assert get_strategy_name(always_defect) == "Always Defect strategy"
+        assert get_strategy_name(always_cooperate) == "Always Cooperate strategy"
+
+        statistics1 = {"total": [], "average": [], "mode": []}
+        statistics1 = update_statistics(statistics1, self.simulation, 1)
+        statistics1 = summarize_statistics(statistics1)
+
+        assert statistics1["total"] == 500000
+        assert statistics1["average"] == 5
+        assert statistics1["mode"] == 5
