@@ -1,6 +1,11 @@
 r"""Simulation module for main subprocesses"""
 
-from .utils import simulate_strategies, update_statistics, summarize_statistics
+from .utils import (
+    simulate_strategies,
+    update_statistics,
+    summarize_statistics,
+    tabulate_summary,
+)
 from .strategies import always_cooperate, always_defect, random_defect
 
 DEFAULT_ROUNDS = 200
@@ -92,6 +97,7 @@ def process_run_simulation():
     always_defect_statistics = summarize_statistics(always_defect_statistics)
     random_defect_statistics = summarize_statistics(random_defect_statistics)
 
-    print(always_cooperate_statistics)
-    print(always_defect_statistics)
-    print(random_defect_statistics)
+    tabulate_summary()
+    tabulate_summary(always_cooperate, always_cooperate_statistics)
+    tabulate_summary(always_defect, always_defect_statistics)
+    tabulate_summary(random_defect, random_defect_statistics)
