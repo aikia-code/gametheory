@@ -5,7 +5,7 @@ from dilemma.strategies import always_cooperate, always_defect
 from dilemma.symbols import COOPERATE, DEFECT
 from dilemma.symbols import TEMPT, SUCKER
 from dilemma.simulation import simulate_strategies
-from dilemma.strategies import get_strategy_name
+from dilemma.utils import get_strategy_name
 
 
 class TestDilemmaModels:
