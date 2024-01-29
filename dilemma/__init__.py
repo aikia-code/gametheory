@@ -6,5 +6,5 @@ across diverse areas. It enhances our comprehension of human behavior in real-wo
 situations, encompassing both cooperation and competition.
 """
 
-__version__ = "0.3.0"
+__version__ = "0.1.0"
 __title__ = "Game Theory"
