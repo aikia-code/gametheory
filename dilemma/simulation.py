@@ -11,93 +11,73 @@ from .strategies import always_cooperate, always_defect, random_defect
 DEFAULT_ROUNDS = 200
 
 
+strategies = {
+    1: always_cooperate,
+    2: always_defect,
+    3: random_defect,
+}
+
+
 def process_run_simulation():
     """sub process for full simulation"""
 
-    always_cooperate_statistics = {"total": [], "average": [], "mode": []}
-    always_defect_statistics = {"total": [], "average": [], "mode": []}
-    random_defect_statistics = {"total": [], "average": [], "mode": []}
-
     # always cooperate | always cooperate
-    simulation = simulate_strategies(
+    simulate_strategies(
         slot1=always_cooperate, slot2=always_cooperate, rounds=DEFAULT_ROUNDS
     )
 
-    always_cooperate_statistics = update_statistics(
-        always_cooperate_statistics, simulation, 1
-    )
-    always_cooperate_statistics = update_statistics(
-        always_cooperate_statistics, simulation, 2
-    )
-
     # always cooperate | always defect
-    simulation = simulate_strategies(
-        slot1=always_cooperate, slot2=always_defect, rounds=DEFAULT_ROUNDS
-    )
-
-    always_cooperate_statistics = update_statistics(
-        always_cooperate_statistics, simulation, 1
-    )
-    always_defect_statistics = update_statistics(
-        always_defect_statistics, simulation, 2
-    )
 
     # always cooperate | random defect
-    simulation = simulate_strategies(
-        slot1=always_cooperate, slot2=random_defect, rounds=DEFAULT_ROUNDS
-    )
-
-    always_cooperate_statistics = update_statistics(
-        always_cooperate_statistics, simulation, 1
-    )
-    random_defect_statistics = update_statistics(
-        random_defect_statistics, simulation, 2
-    )
 
     # always defect | always defect
-    simulation = simulate_strategies(
-        slot1=always_defect, slot2=always_defect, rounds=DEFAULT_ROUNDS
-    )
-
-    always_defect_statistics = update_statistics(
-        always_defect_statistics, simulation, 1
-    )
-    always_defect_statistics = update_statistics(
-        always_defect_statistics, simulation, 2
-    )
 
     # always defect | random defect
-    simulation = simulate_strategies(
-        slot1=always_defect, slot2=random_defect, rounds=DEFAULT_ROUNDS
-    )
 
-    always_defect_statistics = update_statistics(
-        always_defect_statistics, simulation, 1
-    )
-    random_defect_statistics = update_statistics(
-        random_defect_statistics, simulation, 2
-    )
+    # tit for tat | tit for tat
 
-    # random defect | random defect
-    simulation = simulate_strategies(
-        slot1=random_defect, slot2=random_defect, rounds=DEFAULT_ROUNDS
-    )
+    # tit for tat | random defect
 
-    random_defect_statistics = update_statistics(
-        random_defect_statistics, simulation, 1
-    )
-    random_defect_statistics = update_statistics(
-        random_defect_statistics, simulation, 2
-    )
+    # tit for tat | alway defect
+
+    # tit for tat | always cooperate
 
     # summarize
     # -------------------------------
 
-    always_cooperate_statistics = summarize_statistics(always_cooperate_statistics)
-    always_defect_statistics = summarize_statistics(always_defect_statistics)
-    random_defect_statistics = summarize_statistics(random_defect_statistics)
+
+def process_setup_simulation():
+    """sub process for user to setup simulation"""
+
+    slot1 = user_input_select_strategy("slot-1")
+
+    slot2 = user_input_select_strategy("slot-2")
+
+    print("specify number of rounds")
+    number_of_rounds = int(input("> "))
+
+    simulate_strategies(slot1, slot2, number_of_rounds)
+
+    summarize_statistics(slot1)
+    summarize_statistics(slot2)
 
     tabulate_summary()
-    tabulate_summary(always_cooperate, always_cooperate_statistics)
-    tabulate_summary(always_defect, always_defect_statistics)
-    tabulate_summary(random_defect, random_defect_statistics)
+    tabulate_summary(slot1)
+    tabulate_summary(slot2)
+
+
+def user_input_select_strategy(slot_label):
+    """select strategy sequence
+
+    Args:
+        slot_label (str): Slot label for messaging
+
+    Returns:
+        strategy: selected strategy
+    """
+    print(f"select strategy for {slot_label}")
+    print(strategies[1].name, "  --[1]")
+    print(strategies[2].name, "  --[2]")
+    print(strategies[3].name, "  --[3]")
+    slot = strategies[int(input("> "))]
+    return slot
