@@ -129,16 +129,12 @@ class Simulation:
 class Strategy:
     """Supper class for strategies"""
 
-    def __init__(self):
-        self.player_index = None
-        self.session_history = None
+    def __init__(self, opponent_index=0 | 1, session_history=None):
+        self.opponent_index = opponent_index
+        self.session_history = session_history
+        self.strategy_name = "***"
+        self.statistics = {"total": [], "average": [], "mode": []}
 
     def run(self):
         """returns action type"""
         raise NotImplementedError("(method)run: -> [Action.*] must be implemented")
-
-    def create(self, player_index, session_history):
-        """accepts and initializes player_index and history attribute"""
-        self.player_index = player_index
-        self.session_history = session_history
-        return self
