@@ -2,7 +2,6 @@ r"""Simulation module for main subprocesses"""
 
 from .utils import (
     simulate,
-    update_statistics,
     summarize_statistics,
     tabulate_summary,
 )
@@ -25,12 +24,18 @@ def process_run_simulation():
     simulate(slot1=always_cooperate, slot2=always_cooperate, rounds=DEFAULT_ROUNDS)
 
     # always cooperate | always defect
+    simulate(slot1=always_cooperate, slot2=always_defect, rounds=DEFAULT_ROUNDS)
 
     # always cooperate | random defect
+    simulate(slot1=always_cooperate, slot2=random_defect, rounds=DEFAULT_ROUNDS)
 
     # always defect | always defect
+    simulate(slot1=always_defect, slot2=always_defect, rounds=DEFAULT_ROUNDS)
 
     # always defect | random defect
+    simulate(slot1=always_defect, slot2=random_defect, rounds=DEFAULT_ROUNDS)
+
+    # random defect | random defect | TODO: fix: random defect probability to 50%
 
     # tit for tat | tit for tat
 
@@ -42,6 +47,14 @@ def process_run_simulation():
 
     # summarize
     # -------------------------------
+    summarize_statistics(always_defect)
+    summarize_statistics(always_cooperate)
+    summarize_statistics(random_defect)
+
+    tabulate_summary()
+    tabulate_summary(always_cooperate)
+    tabulate_summary(always_defect)
+    tabulate_summary(random_defect)
 
 
 def process_setup_simulation():
