@@ -27,7 +27,7 @@ def simulate_strategies(slot1=None, slot2=None, rounds=1) -> Simulation:
         - (simulation): object containing all simulation information
     """
     if slot1 is None or slot2 is None:
-        raise ValueError("Provide two-set of strategies")
+        raise ValueError("Provide two-set of strategies. [slot1] and [slot2]")
 
     simulation = Simulation()
 
@@ -41,6 +41,9 @@ def simulate_strategies(slot1=None, slot2=None, rounds=1) -> Simulation:
         session.compute_payoffs()
 
         simulation.history.append(session)
+
+    update_statistics(slot1, simulation, 1)
+    update_statistics(slot2, simulation, 2)
 
     return simulation
 
