@@ -1,7 +1,7 @@
 r"""Simulation module for main subprocesses"""
 
 from .utils import (
-    simulate_strategies,
+    simulate,
     update_statistics,
     summarize_statistics,
     tabulate_summary,
@@ -22,9 +22,7 @@ def process_run_simulation():
     """sub process for full simulation"""
 
     # always cooperate | always cooperate
-    simulate_strategies(
-        slot1=always_cooperate, slot2=always_cooperate, rounds=DEFAULT_ROUNDS
-    )
+    simulate(slot1=always_cooperate, slot2=always_cooperate, rounds=DEFAULT_ROUNDS)
 
     # always cooperate | always defect
 
@@ -56,7 +54,7 @@ def process_setup_simulation():
     print("specify number of rounds")
     number_of_rounds = int(input("> "))
 
-    simulate_strategies(slot1, slot2, number_of_rounds)
+    simulate(slot1, slot2, number_of_rounds)
 
     summarize_statistics(slot1)
     summarize_statistics(slot2)

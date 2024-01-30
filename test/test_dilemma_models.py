@@ -5,7 +5,7 @@ from dilemma.strategies import always_cooperate, always_defect
 from dilemma.symbols import COOPERATE, DEFECT
 from dilemma.symbols import TEMPT, SUCKER
 from dilemma.utils import (
-    simulate_strategies,
+    simulate,
     summarize_statistics,
 )
 
@@ -17,9 +17,7 @@ class TestDilemmaModels:
 
     session_inst = Session(names=("sand", "bite"))
 
-    simulation = simulate_strategies(
-        slot1=always_defect, slot2=always_cooperate, rounds=10000
-    )
+    simulation = simulate(slot1=always_defect, slot2=always_cooperate, rounds=10000)
 
     def test_player_response(self):
         """test player instance and its response on a strategy"""

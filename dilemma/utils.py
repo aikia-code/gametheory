@@ -20,7 +20,7 @@ def get_strategy_name(strategy=None):
     return strategy.name
 
 
-def simulate_strategies(slot1=None, slot2=None, rounds=1) -> Simulation:
+def simulate(slot1=None, slot2=None, rounds=1) -> Simulation:
     """run simulation by strategies
 
     Return:
