@@ -160,10 +160,10 @@ cython_debug/
 #.idea/
 
 # visual studio code project files
-.vscode/*
+.vscode
 
 # Local History for Visual Studio Code
-.history/
+.history
 
 # Built Visual Studio Code Extensions
 *.vsix
