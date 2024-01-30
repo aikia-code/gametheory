@@ -17,7 +17,7 @@ def get_strategy_name(strategy=None):
     if strategy is None:
         raise ValueError("A strategy needs to be specified")
 
-    return strategy.strategy_name
+    return strategy.name
 
 
 def simulate_strategies(slot1=None, slot2=None, rounds=1) -> Simulation:
@@ -32,7 +32,7 @@ def simulate_strategies(slot1=None, slot2=None, rounds=1) -> Simulation:
     simulation = Simulation()
 
     for _ in range(rounds):
-        session = Session(names=(get_strategy_name(slot1), get_strategy_name(slot2)))
+        session = Session(names=(slot1.name, slot2.name))
 
         session.players[0].respond(strategy=slot1)
 
@@ -101,7 +101,7 @@ def tabulate_summary(strategy=None):
             sep="",
         )
         return
-    name_string = str(get_strategy_name(strategy))
+    name_string = str(strategy.name)
     total_string = str(strategy.statistics["total"])
     average_string = str(round(strategy.statistics["average"], 3))
     mode_string = str(strategy.statistics["mode"])

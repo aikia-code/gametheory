@@ -132,7 +132,7 @@ class Strategy:
     def __init__(self, opponent_index=0 | 1, session_history=None):
         self.opponent_index = opponent_index
         self.session_history = session_history
-        self.strategy_name = "***"
+        self.name = "***"
         self.statistics = {"total": [], "average": [], "mode": []}
 
     def run(self):

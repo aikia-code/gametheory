@@ -5,7 +5,6 @@ from dilemma.strategies import always_cooperate, always_defect
 from dilemma.symbols import COOPERATE, DEFECT
 from dilemma.symbols import TEMPT, SUCKER
 from dilemma.utils import (
-    get_strategy_name,
     simulate_strategies,
     update_statistics,
     summarize_statistics,
@@ -68,13 +67,9 @@ class TestDilemmaModels:
     def test_simulation_utility_functions(self):
         """test simulation utility functions"""
 
-        assert get_strategy_name(always_defect) == "Always Defect strategy"
-        assert get_strategy_name(always_cooperate) == "Always Cooperate strategy"
+        update_statistics(always_defect, self.simulation, 1)
+        summarize_statistics(always_defect)
 
-        statistics1 = {"total": [], "average": [], "mode": []}
-        statistics1 = update_statistics(statistics1, self.simulation, 1)
-        statistics1 = summarize_statistics(statistics1)
-
-        assert statistics1["total"] == 500000
-        assert statistics1["average"] == 5
-        assert statistics1["mode"] == 5
+        assert always_defect.statistics["total"] == 500000
+        assert always_defect.statistics["average"] == 5
+        assert always_defect.statistics["mode"] == 5

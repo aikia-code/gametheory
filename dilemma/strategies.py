@@ -20,7 +20,7 @@ class AlwaysCooperate(Strategy):
 
     def __init__(self, opponent_index=0 | 1, session_history=None):
         super().__init__(opponent_index, session_history)
-        self.strategy_name = "Always Cooperate"
+        self.name = "Always Cooperate"
 
     def run(self):
         return COOPERATE
@@ -34,7 +34,7 @@ class AlwaysDefect(Strategy):
 
     def __init__(self, opponent_index=0 | 1, session_history=None):
         super().__init__(opponent_index, session_history)
-        self.strategy_name = "Always Defect"
+        self.name = "Always Defect"
 
     def run(self):
         return DEFECT
@@ -48,7 +48,7 @@ class RandomDefect(Strategy):
 
     def __init__(self, opponent_index=0 | 1, session_history=None):
         super().__init__(opponent_index, session_history)
-        self.strategy_name = "Random"
+        self.name = "Random"
 
     def run(self):
         player_choices = [COOPERATE, DEFECT]
@@ -61,7 +61,7 @@ class TitForTat(Strategy):
 
     def __init__(self, opponent_index=0 | 1, session_history=None):
         super().__init__(opponent_index, session_history)
-        self.strategy_name = "Tit for Tat"
+        self.name = "Tit for Tat"
 
     def run(self):
         return (
