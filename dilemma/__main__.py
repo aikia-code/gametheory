@@ -31,8 +31,8 @@ from .simulation import process_run_simulation, process_setup_simulation
 print("Prisoner's dilemma")
 
 while True:
-    print("1. run simulation          ---[A]")
-    print("2. setup simulation        ---[B]")
+    print("  [1]--- run simulation      ---[A]")
+    print("  [2]--- setup simulation    ---[B]")
 
     user_choice = input("> ")
 
