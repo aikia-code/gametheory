@@ -146,6 +146,24 @@ class Simulation:
         slot2 = self.history[0].players[1].name
         return slot1 if slot_num == 1 else slot2
 
+    def get_action_pattern(self):
+        """retrieve action patterns
+
+        Returns:
+            str:pattern
+        """
+        pattern = f"   {self.history[0].players[0].name}\n"
+        pattern += "".join([session.players[0].action[2] for session in self.history])
+
+        pattern += "\n"
+
+        pattern += f"   {self.history[0].players[1].name}\n"
+        pattern += "".join([session.players[1].action[2] for session in self.history])
+
+        pattern += "\n"
+
+        return pattern
+
     def __str__(self) -> str:
         sim_string = ""
         slot1 = self.get_slot_name(1)
