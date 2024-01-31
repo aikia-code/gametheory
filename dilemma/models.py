@@ -71,7 +71,7 @@ class Player:
 class Session:
     """A game session that computes player scores based on their choices"""
 
-    def __init__(self, names: list[str]) -> None:
+    def __init__(self, names: list) -> None:
         """initialise players by name and processes the choices and scores"""
         self.players = (Player(names[0]), Player(names[1]))
 

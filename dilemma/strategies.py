@@ -78,11 +78,12 @@ class TitForTat(Strategy):
         super().__init__(opponent_index, session_history)
 
     def run(self):
-        return (
-            DEFECT
-            if self.session_history[-1].players[self.opponent_index].action
-            else COOPERATE
-        )
+        try:
+            if self.session_history[-1].players[self.opponent_index].action == DEFECT:
+                return DEFECT
+            return COOPERATE
+        except IndexError:
+            return COOPERATE
 
 
 # -----------------------------------------------------

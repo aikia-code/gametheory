@@ -97,6 +97,7 @@ def tabulate_summary(strategy=None):
     """
     if strategy is None:
         print(
+            "   ",
             "strategy".ljust(30),
             "total".center(10),
             "average".center(10),
@@ -110,6 +111,7 @@ def tabulate_summary(strategy=None):
     mode_string = str(strategy.statistics["mode"])
 
     print(
+        "   ",
         name_string.ljust(30),
         total_string.center(10),
         average_string.center(10),
