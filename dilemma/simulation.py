@@ -89,8 +89,6 @@ def process_setup_simulation():
     show_pattern = input("   > ")
     if show_pattern in ["1", "y", "Y"]:
         print(simulation.get_action_pattern())
-    else:
-        exit(-1)
 
 
 def user_input_select_strategy(slot_label):

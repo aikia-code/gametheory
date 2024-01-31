@@ -81,8 +81,7 @@ class TitForTat(Strategy):
         try:
             if self.session_history[-1].players[self.opponent_index].action == DEFECT:
                 return DEFECT
-            else:
-                return COOPERATE
+            return COOPERATE
         except IndexError:
             return COOPERATE
 
