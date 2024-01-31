@@ -5,15 +5,15 @@ from .utils import (
     summarize_statistics,
     tabulate_summary,
 )
-from .strategies import always_cooperate, always_defect, random_defect
+from .strategies import AlwaysCooperate, AlwaysDefect, RandomDefect, TitForTat
 
-DEFAULT_ROUNDS = 200
+DEFAULT_ROUNDS = 400
 
 
 strategies = {
-    1: always_cooperate,
-    2: always_defect,
-    3: random_defect,
+    1: AlwaysCooperate,
+    2: AlwaysDefect,
+    3: RandomDefect,
 }
 
 
@@ -21,19 +21,19 @@ def process_run_simulation():
     """sub process for full simulation"""
 
     # always cooperate | always cooperate
-    simulate(slot1=always_cooperate, slot2=always_cooperate, rounds=DEFAULT_ROUNDS)
+    simulate(slot1=AlwaysCooperate, slot2=AlwaysCooperate, rounds=DEFAULT_ROUNDS)
 
     # always cooperate | always defect
-    simulate(slot1=always_cooperate, slot2=always_defect, rounds=DEFAULT_ROUNDS)
+    simulate(slot1=AlwaysCooperate, slot2=AlwaysDefect, rounds=DEFAULT_ROUNDS)
 
     # always cooperate | random defect
-    simulate(slot1=always_cooperate, slot2=random_defect, rounds=DEFAULT_ROUNDS)
+    simulate(slot1=AlwaysCooperate, slot2=RandomDefect, rounds=DEFAULT_ROUNDS)
 
     # always defect | always defect
-    simulate(slot1=always_defect, slot2=always_defect, rounds=DEFAULT_ROUNDS)
+    simulate(slot1=AlwaysDefect, slot2=AlwaysDefect, rounds=DEFAULT_ROUNDS)
 
     # always defect | random defect
-    simulate(slot1=always_defect, slot2=random_defect, rounds=DEFAULT_ROUNDS)
+    simulate(slot1=AlwaysDefect, slot2=RandomDefect, rounds=DEFAULT_ROUNDS)
 
     # random defect | random defect | TODO: fix: random defect probability to 50%
 
@@ -47,14 +47,14 @@ def process_run_simulation():
 
     # summarize
     # -------------------------------
-    summarize_statistics(always_defect)
-    summarize_statistics(always_cooperate)
-    summarize_statistics(random_defect)
+    summarize_statistics(AlwaysDefect)
+    summarize_statistics(AlwaysCooperate)
+    summarize_statistics(RandomDefect)
 
     tabulate_summary()
-    tabulate_summary(always_cooperate)
-    tabulate_summary(always_defect)
-    tabulate_summary(random_defect)
+    tabulate_summary(AlwaysCooperate)
+    tabulate_summary(AlwaysDefect)
+    tabulate_summary(RandomDefect)
 
 
 def process_setup_simulation():

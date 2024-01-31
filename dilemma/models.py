@@ -12,10 +12,42 @@ from .symbols import COOPERATE, DEFECT
 from .symbols import PUNISH, REWARD, TEMPT, SUCKER
 
 
+class Strategy:
+    """Supper class for strategies"""
+
+    name = "***"
+    statistics = {"total": [], "average": [], "mode": []}
+
+    def __init__(
+        self, opponent_index: int = 0 | 1, session_history: list = None
+    ) -> None:
+        self.opponent_index = opponent_index
+        self.session_history = session_history
+
+    def run(self):
+        """returns action type"""
+        raise NotImplementedError("(method)run: -> [Action.*] must be implemented")
+
+    def create(self, opponent_index: int = 0 | 1, session_history: list = None):
+        """return self with opponent data and session history data
+
+        Args:
+            opponent_index (int, optional): opponent reference. Defaults to 0 | 1.
+            session_history (list, optional): history list. Defaults to None.
+
+        Returns:
+            Strategy: @self
+        """
+        self.opponent_index = opponent_index
+        self.session_history = session_history
+
+        return self
+
+
 class Player:
     """describes a player and provides a state for player object"""
 
-    def __init__(self, name):
+    def __init__(self, name: str) -> None:
         """Create a player by name"""
 
         self.action = DEFECT
@@ -24,7 +56,7 @@ class Player:
 
         self.name = name
 
-    def respond(self, strategy=None):
+    def respond(self, strategy: Strategy = None) -> None:
         """player response with strategy implemented
 
         Args:
@@ -32,18 +64,18 @@ class Player:
         """
         self.action = strategy.run()
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.name} | {self.action[1]} | {self.score}"
 
 
 class Session:
     """A game session that computes player scores based on their choices"""
 
-    def __init__(self, names):
+    def __init__(self, names: list[str]) -> None:
         """initialise players by name and processes the choices and scores"""
         self.players = (Player(names[0]), Player(names[1]))
 
-    def compute_payoffs(self):
+    def compute_payoffs(self) -> None:
         """Computes scores of players"""
         if self.players[0].action == COOPERATE and self.players[1].action == COOPERATE:
             self.players[0].score = self.players[1].score = REWARD[0]
@@ -56,17 +88,17 @@ class Session:
         elif self.players[0].action == DEFECT and self.players[1].action == DEFECT:
             self.players[0].score = self.players[1].score = PUNISH[0]
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"1 | {self.players[0]}\n2 | {self.players[1]}\n"
 
 
 class Simulation:
     """represent information from a simulation"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.history = []
 
-    def get_total_score(self, slot_num=1 | 2):
+    def get_total_score(self, slot_num: int = 1 | 2) -> int:
         """compute total scores of either player
 
         Returns:
@@ -78,7 +110,7 @@ class Simulation:
         slot2 = sum(session.players[1].score for session in self.history)
         return slot1 if slot_num == 1 else slot2
 
-    def get_average_score(self, slot_num=1 | 2):
+    def get_average_score(self, slot_num: int = 1 | 2) -> float:
         """compute average score of either player
 
         Returns:
@@ -90,7 +122,7 @@ class Simulation:
         slot2 = mean([session.players[1].score for session in self.history])
         return slot1 if slot_num == 1 else slot2
 
-    def get_mode_score(self, slot_num=1 | 2):
+    def get_mode_score(self, slot_num: int = 1 | 2) -> int:
         """compute mode score of either player
 
         Returns:
@@ -100,9 +132,9 @@ class Simulation:
             raise ValueError
         slot1 = mode([session.players[0].score for session in self.history])
         slot2 = mode([session.players[1].score for session in self.history])
-        return slot1 if slot_num == 1 else slot2
+        return int(slot1) if slot_num == 1 else int(slot2)
 
-    def get_slot_name(self, slot_num=1 | 2) -> str:
+    def get_slot_name(self, slot_num: int = 1 | 2) -> str:
         """compute mode score of either player
 
         Returns:
@@ -114,7 +146,7 @@ class Simulation:
         slot2 = self.history[0].players[1].name
         return slot1 if slot_num == 1 else slot2
 
-    def __str__(self):
+    def __str__(self) -> str:
         sim_string = ""
         slot1 = self.get_slot_name(1)
         slot2 = self.get_slot_name(2)
@@ -124,17 +156,3 @@ class Simulation:
         sim_string = f"{slot1.center(len(slot1)+2)}|{slot2.center(len(slot2)+2)}\n"
         sim_string += f"{score1.center(len(slot1)+2)}|{score2.center(len(slot2)+2)}"
         return sim_string
-
-
-class Strategy:
-    """Supper class for strategies"""
-
-    def __init__(self, opponent_index=0 | 1, session_history=None):
-        self.opponent_index = opponent_index
-        self.session_history = session_history
-        self.name = "***"
-        self.statistics = {"total": [], "average": [], "mode": []}
-
-    def run(self):
-        """returns action type"""
-        raise NotImplementedError("(method)run: -> [Action.*] must be implemented")

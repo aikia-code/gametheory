@@ -18,9 +18,11 @@ class AlwaysCooperate(Strategy):
     Cooperates at every encounter
     """
 
-    def __init__(self, opponent_index=0 | 1, session_history=None):
+    name = "Always Cooperate"
+    statistics = {"total": [], "average": [], "mode": []}
+
+    def __init__(self, opponent_index: int = 0 | 1, session_history: list = None):
         super().__init__(opponent_index, session_history)
-        self.name = "Always Cooperate"
 
     def run(self):
         return COOPERATE
@@ -32,9 +34,13 @@ class AlwaysDefect(Strategy):
     Defects at every encounter
     """
 
-    def __init__(self, opponent_index=0 | 1, session_history=None):
+    name = "Always Defect"
+    statistics = {"total": [], "average": [], "mode": []}
+
+    def __init__(
+        self, opponent_index: int = 0 | 1, session_history: list = None
+    ) -> None:
         super().__init__(opponent_index, session_history)
-        self.name = "Always Defect"
 
     def run(self):
         return DEFECT
@@ -46,9 +52,13 @@ class RandomDefect(Strategy):
     Defects randomly with every encounter
     """
 
-    def __init__(self, opponent_index=0 | 1, session_history=None):
+    name = "Random"
+    statistics = {"total": [], "average": [], "mode": []}
+
+    def __init__(
+        self, opponent_index: int = 0 | 1, session_history: list = None
+    ) -> None:
         super().__init__(opponent_index, session_history)
-        self.name = "Random"
 
     def run(self):
         player_choices = [COOPERATE, DEFECT]
@@ -59,9 +69,13 @@ class RandomDefect(Strategy):
 class TitForTat(Strategy):
     """Tit for tat strategy"""
 
-    def __init__(self, opponent_index=0 | 1, session_history=None):
+    name = "Tit for Tat"
+    statistics = {"total": [], "average": [], "mode": []}
+
+    def __init__(
+        self, opponent_index: int = 0 | 1, session_history: list = None
+    ) -> None:
         super().__init__(opponent_index, session_history)
-        self.name = "Tit for Tat"
 
     def run(self):
         return (
@@ -73,8 +87,3 @@ class TitForTat(Strategy):
 
 # -----------------------------------------------------
 # exports
-
-
-always_cooperate = AlwaysCooperate()
-always_defect = AlwaysDefect()
-random_defect = RandomDefect()

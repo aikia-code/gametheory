@@ -34,9 +34,9 @@ def simulate(slot1=None, slot2=None, rounds=1) -> Simulation:
     for _ in range(rounds):
         session = Session(names=(slot1.name, slot2.name))
 
-        session.players[0].respond(strategy=slot1)
+        session.players[0].respond(strategy=slot1(1, simulation.history))
 
-        session.players[1].respond(strategy=slot2)
+        session.players[1].respond(strategy=slot2(0, simulation.history))
 
         session.compute_payoffs()
 

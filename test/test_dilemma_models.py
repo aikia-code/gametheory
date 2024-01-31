@@ -1,7 +1,7 @@
 """Test module > models.py"""
 
 from dilemma.models import Player, Session
-from dilemma.strategies import always_cooperate, always_defect
+from dilemma.strategies import AlwaysCooperate, AlwaysDefect
 from dilemma.symbols import COOPERATE, DEFECT
 from dilemma.symbols import TEMPT, SUCKER
 from dilemma.utils import (
@@ -17,7 +17,7 @@ class TestDilemmaModels:
 
     session_inst = Session(names=("sand", "bite"))
 
-    simulation = simulate(slot1=always_defect, slot2=always_cooperate, rounds=10000)
+    simulation = simulate(slot1=AlwaysDefect, slot2=AlwaysCooperate, rounds=10000)
 
     def test_player_response(self):
         """test player instance and its response on a strategy"""
@@ -26,7 +26,7 @@ class TestDilemmaModels:
 
         assert self.player_inst.action == DEFECT
 
-        self.player_inst.respond(strategy=always_cooperate)
+        self.player_inst.respond(strategy=AlwaysCooperate(1, self.simulation.history))
 
         assert self.player_inst.action == COOPERATE
 
@@ -36,8 +36,12 @@ class TestDilemmaModels:
         assert self.session_inst.players[0].name == "sand"
         assert self.session_inst.players[1].name == "bite"
 
-        self.session_inst.players[0].respond(strategy=always_cooperate)
-        self.session_inst.players[1].respond(strategy=always_defect)
+        self.session_inst.players[0].respond(
+            strategy=AlwaysCooperate(1, self.simulation.history)
+        )
+        self.session_inst.players[1].respond(
+            strategy=AlwaysDefect(0, self.simulation.history)
+        )
 
         self.session_inst.compute_payoffs()
 
@@ -59,14 +63,14 @@ class TestDilemmaModels:
     def test_simulation_utility_functions(self):
         """test simulation utility functions"""
 
-        summarize_statistics(always_defect)
+        summarize_statistics(AlwaysDefect)
 
-        assert always_defect.statistics["total"] == 50000
-        assert always_defect.statistics["average"] == 5
-        assert always_defect.statistics["mode"] == 5
+        assert AlwaysDefect.statistics["total"] == 50000
+        assert AlwaysDefect.statistics["average"] == 5
+        assert AlwaysDefect.statistics["mode"] == 5
 
-        summarize_statistics(always_cooperate)
+        summarize_statistics(AlwaysCooperate)
 
-        assert always_cooperate.statistics["total"] == 0
-        assert always_cooperate.statistics["average"] == 0
-        assert always_cooperate.statistics["mode"] == 0
+        assert AlwaysCooperate.statistics["total"] == 0
+        assert AlwaysCooperate.statistics["average"] == 0
+        assert AlwaysCooperate.statistics["mode"] == 0
