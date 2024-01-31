@@ -14,6 +14,7 @@ strategies = {
     1: AlwaysCooperate,
     2: AlwaysDefect,
     3: RandomDefect,
+    4: TitForTat,
 }
 
 
@@ -21,40 +22,43 @@ def process_run_simulation():
     """sub process for full simulation"""
 
     # always cooperate | always cooperate
-    simulate(slot1=AlwaysCooperate, slot2=AlwaysCooperate, rounds=DEFAULT_ROUNDS)
+    simulate(slot1=strategies[1], slot2=strategies[1], rounds=DEFAULT_ROUNDS)
 
     # always cooperate | always defect
-    simulate(slot1=AlwaysCooperate, slot2=AlwaysDefect, rounds=DEFAULT_ROUNDS)
+    simulate(slot1=strategies[1], slot2=strategies[2], rounds=DEFAULT_ROUNDS)
 
     # always cooperate | random defect
-    simulate(slot1=AlwaysCooperate, slot2=RandomDefect, rounds=DEFAULT_ROUNDS)
+    simulate(slot1=strategies[1], slot2=strategies[3], rounds=DEFAULT_ROUNDS)
 
     # always defect | always defect
-    simulate(slot1=AlwaysDefect, slot2=AlwaysDefect, rounds=DEFAULT_ROUNDS)
+    simulate(slot1=strategies[2], slot2=strategies[2], rounds=DEFAULT_ROUNDS)
 
     # always defect | random defect
-    simulate(slot1=AlwaysDefect, slot2=RandomDefect, rounds=DEFAULT_ROUNDS)
+    simulate(slot1=strategies[2], slot2=strategies[3], rounds=DEFAULT_ROUNDS)
 
     # random defect | random defect | TODO: fix: random defect probability to 50%
 
     # tit for tat | tit for tat
-
-    # tit for tat | random defect
-
-    # tit for tat | alway defect
+    simulate(slot1=strategies[4], slot2=strategies[4], rounds=DEFAULT_ROUNDS)
 
     # tit for tat | always cooperate
+    simulate(slot1=strategies[4], slot2=strategies[1], rounds=DEFAULT_ROUNDS)
+
+    # tit for tat | alway defect
+    simulate(slot1=strategies[4], slot2=strategies[2], rounds=DEFAULT_ROUNDS)
+
+    # tit for tat | random defect
+    simulate(slot1=strategies[4], slot2=strategies[3], rounds=DEFAULT_ROUNDS)
 
     # summarize
     # -------------------------------
-    summarize_statistics(AlwaysDefect)
-    summarize_statistics(AlwaysCooperate)
-    summarize_statistics(RandomDefect)
+    for strategy in strategies.values():
+        summarize_statistics(strategy)
 
     tabulate_summary()
-    tabulate_summary(AlwaysCooperate)
-    tabulate_summary(AlwaysDefect)
-    tabulate_summary(RandomDefect)
+
+    for strategy in strategies.values():
+        tabulate_summary(strategy)
 
 
 def process_setup_simulation():
@@ -65,9 +69,9 @@ def process_setup_simulation():
     slot2 = user_input_select_strategy("slot-2")
 
     print("specify number of rounds")
-    number_of_rounds = int(input("> "))
+    number_of_rounds = int(input("   > "))
 
-    simulate(slot1, slot2, number_of_rounds)
+    simulation = simulate(slot1, slot2, number_of_rounds)
 
     summarize_statistics(slot1)
     summarize_statistics(slot2)
@@ -75,6 +79,18 @@ def process_setup_simulation():
     tabulate_summary()
     tabulate_summary(slot1)
     tabulate_summary(slot2)
+
+    print(
+        "Show action pattern?   ",
+        "   [1]---   Yes   ---[Y]",
+        "   [2]---   No    ---[N]",
+        sep="\n",
+    )
+    show_pattern = input("   > ")
+    if show_pattern in ["1", "y", "Y"]:
+        print(simulation.get_action_pattern())
+    else:
+        exit(-1)
 
 
 def user_input_select_strategy(slot_label):
@@ -87,8 +103,10 @@ def user_input_select_strategy(slot_label):
         strategy: selected strategy
     """
     print(f"select strategy for {slot_label}")
-    print(strategies[1].name, "  --[1]")
-    print(strategies[2].name, "  --[2]")
-    print(strategies[3].name, "  --[3]")
-    slot = strategies[int(input("> "))]
+
+    for index, strategy in strategies.items():
+        print(f"  [{index}]---   ", strategy.name, "   ---")
+
+    slot = strategies[int(input("   > "))]
+
     return slot
