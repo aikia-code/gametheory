@@ -31,7 +31,6 @@ jobs:
         pytest
 
   release:
-    needs: build
     runs-on: ubuntu-latest
     concurrency: release
     permissions:

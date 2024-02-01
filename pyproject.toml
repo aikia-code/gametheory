@@ -16,4 +16,5 @@ version_variable = [
     "src_folder/__init__.py:__version__",
     "pyproject.toml:version"
 ]
+commit_author = "Prosperokay <prosperokay@gmail.com>"
 commit_message = "ci(release): {version}\n\nRelease"
