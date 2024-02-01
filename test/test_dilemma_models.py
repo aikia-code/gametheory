@@ -15,7 +15,7 @@ class TestDilemmaModels:
 
     player_inst = Player("test_player")
 
-    session_inst = Session(names=("sand", "bite"))
+    session_inst = Session(names=["sand", "bite"])
 
     simulation = simulate(slot1=AlwaysDefect, slot2=AlwaysCooperate, rounds=10000)
 
