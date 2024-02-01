@@ -19,10 +19,7 @@ class AlwaysCooperate(Strategy):
     """
 
     name = "Always Cooperate"
-    statistics = {"total": [], "average": [], "mode": []}
-
-    def __init__(self, opponent_index: int = 0 | 1, session_history: list = None):
-        super().__init__(opponent_index, session_history)
+    statistics: dict = {"total": [], "average": [], "mode": []}
 
     def run(self):
         return COOPERATE
@@ -35,12 +32,7 @@ class AlwaysDefect(Strategy):
     """
 
     name = "Always Defect"
-    statistics = {"total": [], "average": [], "mode": []}
-
-    def __init__(
-        self, opponent_index: int = 0 | 1, session_history: list = None
-    ) -> None:
-        super().__init__(opponent_index, session_history)
+    statistics: dict = {"total": [], "average": [], "mode": []}
 
     def run(self):
         return DEFECT
@@ -53,12 +45,7 @@ class RandomDefect(Strategy):
     """
 
     name = "Random"
-    statistics = {"total": [], "average": [], "mode": []}
-
-    def __init__(
-        self, opponent_index: int = 0 | 1, session_history: list = None
-    ) -> None:
-        super().__init__(opponent_index, session_history)
+    statistics: dict = {"total": [], "average": [], "mode": []}
 
     def run(self):
         player_choices = [COOPERATE, DEFECT]
@@ -70,12 +57,7 @@ class TitForTat(Strategy):
     """Tit for tat strategy"""
 
     name = "Tit for Tat"
-    statistics = {"total": [], "average": [], "mode": []}
-
-    def __init__(
-        self, opponent_index: int = 0 | 1, session_history: list = None
-    ) -> None:
-        super().__init__(opponent_index, session_history)
+    statistics: dict = {"total": [], "average": [], "mode": []}
 
     def run(self):
         try:
@@ -84,7 +66,3 @@ class TitForTat(Strategy):
             return COOPERATE
         except IndexError:
             return COOPERATE
-
-
-# -----------------------------------------------------
-# exports

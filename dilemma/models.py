@@ -3,6 +3,7 @@ r"""collection of models for the dilemma simulation
 
 # python statistics module
 from statistics import mean, mode
+from typing import Self
 
 
 # Actions
@@ -16,19 +17,17 @@ class Strategy:
     """Supper class for strategies"""
 
     name = "***"
-    statistics = {"total": [], "average": [], "mode": []}
+    statistics: dict = {"total": [], "average": [], "mode": []}
 
-    def __init__(
-        self, opponent_index: int = 0 | 1, session_history: list = None
-    ) -> None:
+    def __init__(self, opponent_index: int, session_history: list) -> None:
         self.opponent_index = opponent_index
         self.session_history = session_history
 
-    def run(self):
+    def run(self) -> tuple[int, str, str]:
         """returns action type"""
         raise NotImplementedError("(method)run: -> [Action.*] must be implemented")
 
-    def create(self, opponent_index: int = 0 | 1, session_history: list = None):
+    def create(self, opponent_index: int, session_history: list) -> Self:
         """return self with opponent data and session history data
 
         Args:
@@ -36,7 +35,7 @@ class Strategy:
             session_history (list, optional): history list. Defaults to None.
 
         Returns:
-            Strategy: @self
+            Strategy: Self
         """
         self.opponent_index = opponent_index
         self.session_history = session_history
@@ -56,7 +55,7 @@ class Player:
 
         self.name = name
 
-    def respond(self, strategy: Strategy = None) -> None:
+    def respond(self, strategy: Strategy) -> None:
         """player response with strategy implemented
 
         Args:
@@ -71,7 +70,7 @@ class Player:
 class Session:
     """A game session that computes player scores based on their choices"""
 
-    def __init__(self, names: list) -> None:
+    def __init__(self, names: list[str]) -> None:
         """initialise players by name and processes the choices and scores"""
         self.players = (Player(names[0]), Player(names[1]))
 
@@ -96,7 +95,7 @@ class Simulation:
     """represent information from a simulation"""
 
     def __init__(self) -> None:
-        self.history = []
+        self.history: list[Session] = []
 
     def get_total_score(self, slot_num: int = 1 | 2) -> int:
         """compute total scores of either player

@@ -2,25 +2,10 @@ r"""utility functions for simulation """
 from statistics import mean, mode
 
 
-from .models import Session, Simulation
+from .models import Session, Simulation, Strategy
 
 
-def get_strategy_name(strategy=None):
-    """return the name of the strategy
-
-    Args:
-        strategy (strategy): strategy object
-
-    Returns:
-        str: name of strategy
-    """
-    if strategy is None:
-        raise ValueError("A strategy needs to be specified")
-
-    return strategy.name
-
-
-def simulate(slot1=None, slot2=None, rounds=1) -> Simulation:
+def simulate(slot1: type[Strategy], slot2: type[Strategy], rounds=1) -> Simulation:
     """run simulation by strategies
 
     Return:
@@ -32,7 +17,7 @@ def simulate(slot1=None, slot2=None, rounds=1) -> Simulation:
     simulation = Simulation()
 
     for _ in range(rounds):
-        session = Session(names=(slot1.name, slot2.name))
+        session = Session(names=[slot1.name, slot2.name])
 
         session.players[0].respond(strategy=slot1(1, simulation.history))
 
@@ -48,7 +33,11 @@ def simulate(slot1=None, slot2=None, rounds=1) -> Simulation:
     return simulation
 
 
-def update_statistics(strategy, simulation_instance, slot_num) -> dict:
+def update_statistics(
+    strategy: type[Strategy],
+    simulation_instance: Simulation,
+    slot_num: int,
+) -> dict:
     """Update current statistics
 
     Args:
@@ -69,7 +58,7 @@ def update_statistics(strategy, simulation_instance, slot_num) -> dict:
     return strategy.statistics
 
 
-def summarize_statistics(strategy) -> dict:
+def summarize_statistics(strategy: type[Strategy]) -> dict:
     """summarize all statistics
 
     Args:
@@ -88,7 +77,7 @@ def summarize_statistics(strategy) -> dict:
     return strategy.statistics
 
 
-def tabulate_summary(strategy=None):
+def tabulate_summary(strategy: type[Strategy] | None = None) -> None:
     """print summary table lines
 
     Args:

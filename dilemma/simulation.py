@@ -1,11 +1,18 @@
 r"""Simulation module for main subprocesses"""
 
+from .models import Strategy
+
 from .utils import (
     simulate,
     summarize_statistics,
     tabulate_summary,
 )
-from .strategies import AlwaysCooperate, AlwaysDefect, RandomDefect, TitForTat
+from .strategies import (
+    AlwaysCooperate,
+    AlwaysDefect,
+    RandomDefect,
+    TitForTat,
+)
 
 DEFAULT_ROUNDS = 400
 
@@ -18,7 +25,7 @@ strategies = {
 }
 
 
-def process_run_simulation():
+def process_run_simulation() -> None:
     """sub process for full simulation"""
 
     # always cooperate | always cooperate
@@ -61,7 +68,7 @@ def process_run_simulation():
         tabulate_summary(strategy)
 
 
-def process_setup_simulation():
+def process_setup_simulation() -> None:
     """sub process for user to setup simulation"""
 
     slot1 = user_input_select_strategy("slot-1")
@@ -91,7 +98,7 @@ def process_setup_simulation():
         print(simulation.get_action_pattern())
 
 
-def user_input_select_strategy(slot_label):
+def user_input_select_strategy(slot_label: str) -> type[Strategy]:
     """select strategy sequence
 
     Args:
