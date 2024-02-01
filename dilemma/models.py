@@ -7,7 +7,7 @@ from typing import Self
 
 
 # Actions
-from .symbols import COOPERATE, DEFECT
+from .symbols import COOPERATE, DEFECT, PlayerAction
 
 # Payoffs
 from .symbols import PUNISH, REWARD, TEMPT, SUCKER
@@ -23,7 +23,7 @@ class Strategy:
         self.opponent_index = opponent_index
         self.session_history = session_history
 
-    def run(self) -> tuple[int, str, str]:
+    def run(self) -> PlayerAction:
         """returns action type"""
         raise NotImplementedError("(method)run: -> [Action.*] must be implemented")
 
