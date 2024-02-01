@@ -10,3 +10,10 @@ dynamic = ["version", "description"]
 [build-system]
 requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
+
+[tool.semantic_release]
+version_variable = [
+    "src_folder/__init__.py:__version__",
+    "pyproject.toml:version"
+]
+commit_message = "ci(release): {version}\n\nRelease"
