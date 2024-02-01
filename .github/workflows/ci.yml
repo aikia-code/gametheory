@@ -1,6 +1,9 @@
-name: Game theory package CI
+name: CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches: 
+      - main
 
 jobs:
   build:
