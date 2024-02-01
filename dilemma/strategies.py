@@ -1,5 +1,6 @@
 r"""A collection of available strategies for simulation
 """
+
 # utility imports
 from random import choice
 
