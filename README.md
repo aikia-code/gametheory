@@ -14,10 +14,21 @@ Inspired by [Robert Axelrod's 1984 The Evolution of Cooperation](https://www.res
 2. run `dilemma` with `python -m dilemma`
 3. play around with the simulation
 
+<!-- DEFINITIONS -->
+
+[email]: prosperokay@gmail.com
+[profile]: https://github.com/ProsperoKay
+
 <!-- CONTRIBUTING -->
 ## Contributing
 
-The best way to contribute is to fork the repo, create branch, commit changes and create a pull request.
+> When you are ready to generate a pull request, either for preliminary review, or for consideration of merging into the project you must first push your local topic branch back up to GitHub:
+
+```
+git push origin newfeature
+```
+
+> Once you've committed and pushed all of your changes to GitHub, go to the page for your fork on GitHub, select your development branch, and click the pull request button. If you need to make any adjustments to your pull request, just push the updates to your branch. Your pull request will automatically track the changes on your development branch and update.
 
 Remember to ⭐star this repo to receive updates.
 
@@ -27,4 +38,4 @@ Remember to ⭐star this repo to receive updates.
 MIT
 
 ---
-GitHub [@prosperokay](https://github.com/ProsperoKay)
+GitHub [@prosperokay][profile] • Email[@prosperokay][email]
