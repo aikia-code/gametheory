@@ -10,20 +10,16 @@ Inspired by [Robert Axelrod's 1984 The Evolution of Cooperation](https://www.res
 
 ## Usage
 
-1. clone repo with `git clone https://github.com/ProsperoKay/gametheory.git`
+1. clone the repo: `git clone https://github.com/ProsperoKay/gametheory.git`
 2. run `dilemma` with `python -m dilemma`
-3. play around
+3. play around with the simulation
 
 <!-- CONTRIBUTING -->
 ## Contributing
 
-The best way to contribute is to fork the repo and create a pull request.
+The best way to contribute is to fork the repo, create branch, commit changes and create a pull request.
 
-1. Fork the Project
-2. Create your "Feature" Branch
-3. Commit your Changes
-4. Push to the Branch
-5. Open a Pull Request
+Remember to ⭐star this repo to receive updates.
 
 <!-- LICENSE -->
 ## License
