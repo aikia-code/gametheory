@@ -1,16 +1,14 @@
 name: CI
-
 on:
   push:
-    branches: 
+    branches:
       - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Set up Python 3
       uses: actions/setup-python@v5.0.0
       with:
@@ -29,20 +27,3 @@ jobs:
     - name: Testing with pytest
       run: |
         pytest
-
-  release:
-    runs-on: ubuntu-latest
-    concurrency: release
-    permissions:
-      id-token: write
-      contents: write
-      issues: write
-      pull-requests: write
-    steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-    - name: Python Semantic Release
-      uses: python-semantic-release/python-semantic-release@master
-      with:
-        github_token: ${{ secrets.GH_TOKEN }}
