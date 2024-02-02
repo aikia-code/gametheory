@@ -1,0 +1,13 @@
+{
+  "name": "gametheory",
+  "version": "0.3.0",
+  "description": "Interactive platform to simulate and engage with game theory",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "github-semantic-release": "^0.0.0",
+    "semantic-release": "^23.0.0"
+  }
+}

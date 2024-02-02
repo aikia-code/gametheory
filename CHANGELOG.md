@@ -2,31 +2,6 @@
 
 
 
-## v0.2.0 (2024-02-01)
-
-### Ci
-
-* ci: update release pipline ([`9fa632a`](https://github.com/ProsperoKay/gametheory/commit/9fa632a2fd30641980ff74f410da0485d08bfe2b))
-
-### Feature
-
-* feat: add payoff type and action type ([`84d270f`](https://github.com/ProsperoKay/gametheory/commit/84d270f02c50719e66c3b0c634149aa216ceae83))
-
-### Unknown
-
-* Merge pull request #12 from ProsperoKay:v0
-
-update types ([`690055f`](https://github.com/ProsperoKay/gametheory/commit/690055f5c62043d5ed9a4f11d3263b8d5a195a06))
-
-* Merge remote-tracking branch &#39;origin/main&#39; into v0 ([`12d7c0d`](https://github.com/ProsperoKay/gametheory/commit/12d7c0d60ecbc858cfa91dacd8dfd6c82d8c280e))
-
-* Merge pull request #11 from ProsperoKay:v0
-
-update release pipline information ([`b36ff1b`](https://github.com/ProsperoKay/gametheory/commit/b36ff1bb5d0465bcd4e3189539477d2f68b93bb1))
-
-* Merge remote-tracking branch &#39;origin/main&#39; into v0 ([`09f7483`](https://github.com/ProsperoKay/gametheory/commit/09f748382accc86b0fc8afb037fb2972225f7018))
-
-
 ## v0.1.0 (2024-02-01)
 
 ### Build
@@ -54,10 +29,6 @@ update release pipline information ([`b36ff1b`](https://github.com/ProsperoKay/g
 * chore: describe python project ([`b724987`](https://github.com/ProsperoKay/gametheory/commit/b724987a2e4dfb3ea33c38d863a4c2940ed572f1))
 
 ### Ci
-
-* ci(release): 0.1.0
-
-Release ([`21fd390`](https://github.com/ProsperoKay/gametheory/commit/21fd3900a4ef56b70dbcd394a3b2df28a789b60b))
 
 * ci: update ci release ([`5c17592`](https://github.com/ProsperoKay/gametheory/commit/5c17592603edac5ab919ae911fc3e10128b1ba6c))
 
