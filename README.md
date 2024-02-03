@@ -24,8 +24,8 @@ Inspired by [Robert Axelrod's 1984 The Evolution of Cooperation](https://www.res
 
 > When you are ready to generate a pull request, either for preliminary review, or for consideration of merging into the project you must first push your local topic branch back up to GitHub:
 
-```
-git push origin <new_feature>
+```bash
+git push origin new_feature
 ```
 
 > Once you've committed and pushed all of your changes to GitHub, go to the page for your fork on GitHub, select your development branch, and click the pull request button. If you need to make any adjustments to your pull request, just push the updates to your branch. Your pull request will automatically track the changes on your development branch and update.
