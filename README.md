@@ -1,14 +1,18 @@
-# "Game theory" simulations
+# "Game theory" simulations 🕹️
 
-Interactive platform to simulate and engage with game theory
+Interactively simulate and engage with game theory
 
 Game theory is a key tool for analyzing strategic interactions and decision-making across diverse areas. It enhances our comprehension of human behavior in real-world situations, encompassing both cooperation and competition.
+
+> *"if you are going to interact once you are better off defect otherwise you should consider cooperating"* *--- Unknown*
 
 Inspired by [Robert Axelrod's 1984 The Evolution of Cooperation](https://www.researchgate.net/publication/316766066_Robert_Axelrod's_1984_The_Evolution_of_Cooperation) and [Veritasium's take on the topic](https://youtu.be/mScpHTIi-kM?si=15H8lTjRfC2YoQHG)
 
 <!-- USAGE EXAMPLES -->
 
 ## Usage
+
+### Dilemma
 
 1. clone the repo: `git clone https://github.com/ProsperoKay/gametheory.git`
 2. run `dilemma` with `python -m dilemma`
