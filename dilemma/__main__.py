@@ -4,28 +4,33 @@ UI:
     - Prisoner's dilemma
     - run simulation          ---[A]
     - setup simulation        ---[B]
-    
+
     [A] - auto run every possible simulation
         - each strategy face off against itself and all other strategies
         - display full strategy statistics ranked by total score
-        
+
         strategy                  | score | average | mode |
         always cooperate strategy |  500  |    3    |   5  |
         -                         |   -   |    -    |   -  |
-        
+
     [B] - select strategy for slot 1 [list of strategies]
         - select strategy for slot 2 [list of strategies]
         - specify number of rounds >> _
-        
+
         - run simulate with strategy
         - display statistics ranked by total score
-        
+
         strategy                  | score | average | mode |
         always cooperate strategy |  500  |    3    |   5  |
         -                         |   -   |    -    |   -  |
 
 """
-from .simulation import process_run_simulation, process_setup_simulation
+
+from .simulation import (
+    process_run_simulation,
+    process_setup_simulation,
+    summarize_simulation_table,
+)
 
 
 print("Prisoner's dilemma")
@@ -38,6 +43,7 @@ while True:
 
     if user_choice in ["a", "A", "1"]:
         process_run_simulation()
+        summarize_simulation_table()
         break
 
     if user_choice in ["b", "B", "2"]:
