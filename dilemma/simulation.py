@@ -14,10 +14,8 @@ from .strategies import (
     TitForTat,
 )
 
-DEFAULT_ROUNDS = 400
-
-
-strategies = {
+# strategies list
+strategies: dict[int, type[Strategy]] = {
     1: AlwaysCooperate,
     2: AlwaysDefect,
     3: RandomDefect,
@@ -28,37 +26,42 @@ strategies = {
 def process_run_simulation() -> None:
     """sub process for full simulation"""
 
+    print("simulating... ")
+
     # always cooperate | always cooperate
-    simulate(slot1=strategies[1], slot2=strategies[1], rounds=DEFAULT_ROUNDS)
+    print(simulate(slot1=strategies[1], slot2=strategies[1]))
 
     # always cooperate | always defect
-    simulate(slot1=strategies[1], slot2=strategies[2], rounds=DEFAULT_ROUNDS)
+    print(simulate(slot1=strategies[1], slot2=strategies[2]))
 
     # always cooperate | random defect
-    simulate(slot1=strategies[1], slot2=strategies[3], rounds=DEFAULT_ROUNDS)
+    print(simulate(slot1=strategies[1], slot2=strategies[3]))
 
     # always defect | always defect
-    simulate(slot1=strategies[2], slot2=strategies[2], rounds=DEFAULT_ROUNDS)
+    print(simulate(slot1=strategies[2], slot2=strategies[2]))
 
     # always defect | random defect
-    simulate(slot1=strategies[2], slot2=strategies[3], rounds=DEFAULT_ROUNDS)
+    print(simulate(slot1=strategies[2], slot2=strategies[3]))
 
     # random defect | random defect | TODO: fix: random defect probability to 50%
 
     # tit for tat | tit for tat
-    simulate(slot1=strategies[4], slot2=strategies[4], rounds=DEFAULT_ROUNDS)
+    print(simulate(slot1=strategies[4], slot2=strategies[4]))
 
     # tit for tat | always cooperate
-    simulate(slot1=strategies[4], slot2=strategies[1], rounds=DEFAULT_ROUNDS)
+    print(simulate(slot1=strategies[4], slot2=strategies[1]))
 
     # tit for tat | alway defect
-    simulate(slot1=strategies[4], slot2=strategies[2], rounds=DEFAULT_ROUNDS)
+    print(simulate(slot1=strategies[4], slot2=strategies[2]))
 
     # tit for tat | random defect
-    simulate(slot1=strategies[4], slot2=strategies[3], rounds=DEFAULT_ROUNDS)
+    print(simulate(slot1=strategies[4], slot2=strategies[3]))
 
-    # summarize
-    # -------------------------------
+
+def summarize_simulation_table():
+    """summarize and tabulate statistics"""
+    print("summarizing... ")
+
     for strategy in strategies.values():
         summarize_statistics(strategy)
 
@@ -66,6 +69,11 @@ def process_run_simulation() -> None:
 
     for strategy in strategies.values():
         tabulate_summary(strategy)
+
+    print("population")
+
+    for strategy in strategies.values():
+        print(f"   {strategy.name}   ---p{strategy.population}")
 
 
 def process_setup_simulation() -> None:
@@ -77,6 +85,8 @@ def process_setup_simulation() -> None:
 
     print("specify number of rounds")
     number_of_rounds = int(input("   > "))
+
+    print("simulating... ")
 
     simulation = simulate(slot1, slot2, number_of_rounds)
 
