@@ -1,11 +1,16 @@
 r"""utility functions for simulation """
+
 from statistics import mean, mode
 
 
 from .models import Session, Simulation, Strategy
 
 
-def simulate(slot1: type[Strategy], slot2: type[Strategy], rounds=1) -> Simulation:
+def simulate(
+    slot1: type[Strategy],
+    slot2: type[Strategy],
+    rounds=200,
+) -> Simulation:
     """run simulation by strategies
 
     Return:
@@ -24,6 +29,18 @@ def simulate(slot1: type[Strategy], slot2: type[Strategy], rounds=1) -> Simulati
         session.players[1].respond(strategy=slot2(0, simulation.history))
 
         session.compute_payoffs()
+
+        if session.players[0].score > session.players[1].score:
+            slot1.population += 1
+            slot2.population -= 1
+
+        if session.players[1].score > session.players[0].score:
+            slot2.population += 1
+            slot1.population -= 1
+
+        if session.players[1].score == session.players[0].score:
+            slot2.population += 1
+            slot1.population += 1
 
         simulation.history.append(session)
 
