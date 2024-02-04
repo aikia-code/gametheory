@@ -18,6 +18,7 @@ class Strategy:
 
     name = "***"
     statistics: dict = {"total": [], "average": [], "mode": []}
+    population: int = 2
 
     def __init__(self, opponent_index: int, session_history: list) -> None:
         self.opponent_index = opponent_index
@@ -170,6 +171,6 @@ class Simulation:
         score1 = str(self.get_total_score(1))
         score2 = str(self.get_total_score(2))
 
-        sim_string = f"{slot1.center(len(slot1)+2)}|{slot2.center(len(slot2)+2)}\n"
-        sim_string += f"{score1.center(len(slot1)+2)}|{score2.center(len(slot2)+2)}"
+        sim_string = f"{slot1}   ---[{score1}]   |   "
+        sim_string += f"{slot2}   ---[{score2}]"
         return sim_string
