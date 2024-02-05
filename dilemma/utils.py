@@ -56,7 +56,7 @@ def update_statistics(
     strategy: Strategy,
     simulation_instance: Simulation,
     slot_num: int,
-) -> dict:
+) -> dict[str, int]:
     """Update current statistics
 
     Args:
