@@ -19,6 +19,8 @@ class Strategy:
     name = "***"
     statistics: dict = {"total": [], "average": [], "mode": []}
     population: int = 2
+    no_mercy: bool = False
+    opponent_action_history: list[PlayerAction] = []
 
     def __init__(self, opponent_index: int, session_history: list) -> None:
         self.opponent_index = opponent_index
