@@ -4,7 +4,6 @@ from .models import Strategy
 
 from .utils import (
     simulate,
-    summarize_statistics,
     tabulate_summary,
 )
 from .strategies import (
@@ -17,13 +16,13 @@ from .strategies import (
 )
 
 # strategies list
-strategies: dict[int, type[Strategy]] = {
-    1: AlwaysCooperate,
-    2: AlwaysDefect,
-    3: RandomDefect,
-    4: TitForTat,
-    5: TitFor2Tat,
-    6: Historian,
+strategies: dict[int, Strategy] = {
+    1: AlwaysCooperate([]),
+    2: AlwaysDefect([]),
+    3: RandomDefect([]),
+    4: TitForTat([]),
+    5: TitFor2Tat([]),
+    6: Historian([]),
 }
 
 
@@ -99,9 +98,6 @@ def summarize_simulation_table():
     """summarize and tabulate statistics"""
     print("summarizing... ")
 
-    for strategy in strategies.values():
-        summarize_statistics(strategy)
-
     tabulate_summary()
 
     for strategy in strategies.values():
@@ -127,9 +123,6 @@ def process_setup_simulation() -> None:
 
     simulation = simulate(slot1, slot2, number_of_rounds)
 
-    summarize_statistics(slot1)
-    summarize_statistics(slot2)
-
     tabulate_summary()
     tabulate_summary(slot1)
     tabulate_summary(slot2)
@@ -145,7 +138,7 @@ def process_setup_simulation() -> None:
         print(simulation.get_action_pattern())
 
 
-def user_input_select_strategy(slot_label: str) -> type[Strategy]:
+def user_input_select_strategy(slot_label: str) -> Strategy:
     """select strategy sequence
 
     Args:
