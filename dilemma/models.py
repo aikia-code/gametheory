@@ -17,14 +17,14 @@ class Strategy:
     """Supper class for strategies"""
 
     name = "***"
-    statistics: dict = {"total": [], "average": [], "mode": []}
-    population: int = 2
-    no_mercy: bool = False
-    opponent_action_history: list[PlayerAction] = []
 
-    def __init__(self, opponent_index: int, session_history: list) -> None:
+    def __init__(self, session_history: list, opponent_index: int = 0) -> None:
         self.opponent_index = opponent_index
         self.session_history = session_history
+        self.statistics: dict = {"total": [], "average": [], "mode": []}
+        self.population: int = 2
+        self.no_mercy: bool = False
+        self.opponent_action_history: list[PlayerAction] = []
 
     def run(self) -> PlayerAction:
         """returns action type"""
