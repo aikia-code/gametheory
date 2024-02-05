@@ -5,7 +5,7 @@ r"""A collection of available strategies for simulation
 from random import choice
 
 # standard simulation imports
-from .symbols import COOPERATE, DEFECT, PlayerAction
+from .symbols import COOPERATE, DEFECT
 from .models import Strategy
 
 
@@ -20,8 +20,6 @@ class AlwaysCooperate(Strategy):
     """
 
     name = "Always Cooperate"
-    statistics: dict = {"total": [], "average": [], "mode": []}
-    population = 2
 
     def run(self):
         return COOPERATE
@@ -34,8 +32,6 @@ class AlwaysDefect(Strategy):
     """
 
     name = "Always Defect"
-    statistics: dict = {"total": [], "average": [], "mode": []}
-    population = 2
 
     def run(self):
         return DEFECT
@@ -48,8 +44,6 @@ class RandomDefect(Strategy):
     """
 
     name = "Random"
-    statistics: dict = {"total": [], "average": [], "mode": []}
-    population = 2
 
     def run(self):
         player_choices = [COOPERATE, DEFECT]
@@ -61,8 +55,6 @@ class TitForTat(Strategy):
     """Tit for tat strategy"""
 
     name = "Tit for Tat"
-    statistics: dict = {"total": [], "average": [], "mode": []}
-    population = 2
 
     def run(self):
         try:
@@ -80,8 +72,6 @@ class TitFor2Tat(Strategy):
     """
 
     name = "Tit for 2 Tat"
-    statistics: dict = {"total": [], "average": [], "mode": []}
-    population = 2
 
     def run(self):
         try:
@@ -103,9 +93,6 @@ class Unforgiving(Strategy):
     """
 
     name = "Unforgiving"
-    statistics: dict = {"total": [], "average": [], "mode": []}
-    population = 2
-    no_mercy: bool = False
 
     def run(self):
         try:
@@ -123,9 +110,6 @@ class Historian(Strategy):
     """
 
     name = "Historian"
-    statistics: dict = {"total": [], "average": [], "mode": []}
-    population = 2
-    opponent_action_history: list[PlayerAction] = []
 
     def run(self):
         try:
