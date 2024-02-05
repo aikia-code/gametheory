@@ -37,7 +37,7 @@ print("Prisoner's dilemma")
 
 while True:
     print("  [1]--- run simulation      ---[A]")
-    print("  [2]--- setup simulation    ---[B]")
+    print("  [2]--- create matchup    ---[B]")
 
     user_choice = input("> ")
 

@@ -10,7 +10,9 @@ from .utils import (
 from .strategies import (
     AlwaysCooperate,
     AlwaysDefect,
+    Historian,
     RandomDefect,
+    TitFor2Tat,
     TitForTat,
 )
 
@@ -20,6 +22,8 @@ strategies: dict[int, type[Strategy]] = {
     2: AlwaysDefect,
     3: RandomDefect,
     4: TitForTat,
+    5: TitFor2Tat,
+    6: Historian,
 }
 
 
@@ -56,6 +60,39 @@ def process_run_simulation() -> None:
 
     # tit for tat | random defect
     print(simulate(slot1=strategies[4], slot2=strategies[3]))
+
+    # tit for two tat | tit for two tat
+    print(simulate(slot1=strategies[5], slot2=strategies[5]))
+
+    # tit for two tat | tit for tat
+    print(simulate(slot1=strategies[5], slot2=strategies[4]))
+
+    # tit for two tat | always cooperate
+    print(simulate(slot1=strategies[5], slot2=strategies[1]))
+
+    # tit for two tat | always defect
+    print(simulate(slot1=strategies[5], slot2=strategies[2]))
+
+    # tit for two tat | random defect
+    print(simulate(slot1=strategies[5], slot2=strategies[3]))
+
+    # historian | historian
+    print(simulate(slot1=strategies[6], slot2=strategies[6]))
+
+    # historian | tit for 2 tat
+    print(simulate(slot1=strategies[6], slot2=strategies[5]))
+
+    # historian | tit for tat
+    print(simulate(slot1=strategies[6], slot2=strategies[4]))
+
+    # historian | always cooperate
+    print(simulate(slot1=strategies[6], slot2=strategies[1]))
+
+    # historian | always defect
+    print(simulate(slot1=strategies[6], slot2=strategies[2]))
+
+    # historian | random defect
+    print(simulate(slot1=strategies[6], slot2=strategies[3]))
 
 
 def summarize_simulation_table():
