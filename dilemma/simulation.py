@@ -96,14 +96,22 @@ def process_run_simulation() -> None:
 
 def summarize_simulation_table():
     """summarize and tabulate statistics"""
-    print("summarizing... ")
+    print(
+        "summary ",
+        "================================================================ ",
+        sep="\n",
+    )
 
     tabulate_summary()
 
     for strategy in strategies.values():
         tabulate_summary(strategy)
 
-    print("population")
+    print(
+        "population",
+        "================================================================ ",
+        sep="\n",
+    )
 
     for strategy in strategies.values():
         print(f"   {strategy.name}   ---p{strategy.population}")
@@ -128,14 +136,18 @@ def process_setup_simulation() -> None:
     tabulate_summary(slot2)
 
     print(
-        "Show action pattern?   ",
-        "   [1]---   Yes   ---[Y]",
-        "   [2]---   No    ---[N]",
+        "  ",
+        "   [1]---   Show action pattern?   ---[-]",
+        "   [2]---   New Simulation         ---[-]",
+        "   [3]---   close (X)              ---[-]",
         sep="\n",
     )
-    show_pattern = input("   > ")
-    if show_pattern in ["1", "y", "Y"]:
+    show_pattern = input("> ")
+    if show_pattern in ["1"]:
         print(simulation.get_action_pattern())
+
+    if show_pattern in ["3", "x", "X"]:
+        return
 
 
 def user_input_select_strategy(slot_label: str) -> Strategy:
@@ -150,8 +162,8 @@ def user_input_select_strategy(slot_label: str) -> Strategy:
     print(f"select strategy for {slot_label}")
 
     for index, strategy in strategies.items():
-        print(f"  [{index}]---   ", strategy.name, "   ---")
+        print(f"  [{index}]---   ", strategy.name)
 
-    slot = strategies[int(input("   > "))]
+    slot = strategies[int(input("> "))]
 
     return slot
