@@ -1,6 +1,6 @@
 {
   "name": "gametheory",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Simulate Game theory",
   "scripts": {
     "release": "standard-version"

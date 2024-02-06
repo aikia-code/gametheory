@@ -20,7 +20,6 @@ class AlwaysCooperate(Strategy):
     """
 
     name = "Always Cooperate"
-    statistics: dict = {"total": [], "average": [], "mode": []}
 
     def run(self):
         return COOPERATE
@@ -33,7 +32,6 @@ class AlwaysDefect(Strategy):
     """
 
     name = "Always Defect"
-    statistics: dict = {"total": [], "average": [], "mode": []}
 
     def run(self):
         return DEFECT
@@ -46,7 +44,6 @@ class RandomDefect(Strategy):
     """
 
     name = "Random"
-    statistics: dict = {"total": [], "average": [], "mode": []}
 
     def run(self):
         player_choices = [COOPERATE, DEFECT]
@@ -58,7 +55,6 @@ class TitForTat(Strategy):
     """Tit for tat strategy"""
 
     name = "Tit for Tat"
-    statistics: dict = {"total": [], "average": [], "mode": []}
 
     def run(self):
         try:
@@ -67,3 +63,63 @@ class TitForTat(Strategy):
             return COOPERATE
         except IndexError:
             return COOPERATE
+
+
+class TitFor2Tat(Strategy):
+    """Tit for 2 tat strategy
+
+    Defects after opponent defects twice in a row
+    """
+
+    name = "Tit for 2 Tat"
+
+    def run(self):
+        try:
+            if (
+                self.session_history[-1].players[self.opponent_index].action == DEFECT
+                and self.session_history[-2].players[self.opponent_index].action
+                == DEFECT
+            ):
+                return DEFECT
+            return COOPERATE
+        except IndexError:
+            return COOPERATE
+
+
+class Unforgiving(Strategy):
+    """None Forgiving strategy
+
+    Defects forever if opponent defects even once
+    """
+
+    name = "Unforgiving"
+
+    def run(self):
+        try:
+            if self.session_history[-1].players[self.opponent_index].action == DEFECT:
+                self.no_mercy = True
+        except IndexError:
+            return COOPERATE
+        return DEFECT if self.no_mercy else COOPERATE
+
+
+class Historian(Strategy):
+    """Historian strategy
+
+    Defects when opponent has defected more historically
+    """
+
+    name = "Historian"
+
+    def run(self):
+        try:
+            self.opponent_action_history.append(
+                self.session_history[-1].players[self.opponent_index].action
+            )
+        except IndexError:
+            return COOPERATE
+
+        total_cooperate = self.opponent_action_history.count(COOPERATE)
+        total_defect = self.opponent_action_history.count(DEFECT)
+
+        return DEFECT if total_defect > total_cooperate else COOPERATE

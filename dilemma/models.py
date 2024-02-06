@@ -17,11 +17,14 @@ class Strategy:
     """Supper class for strategies"""
 
     name = "***"
-    statistics: dict = {"total": [], "average": [], "mode": []}
 
-    def __init__(self, opponent_index: int, session_history: list) -> None:
+    def __init__(self, session_history: list, opponent_index: int = 0) -> None:
         self.opponent_index = opponent_index
         self.session_history = session_history
+        self.statistics: dict = {"total": [], "average": [], "mode": []}
+        self.population: int = 2
+        self.no_mercy: bool = False
+        self.opponent_action_history: list[PlayerAction] = []
 
     def run(self) -> PlayerAction:
         """returns action type"""
@@ -170,6 +173,6 @@ class Simulation:
         score1 = str(self.get_total_score(1))
         score2 = str(self.get_total_score(2))
 
-        sim_string = f"{slot1.center(len(slot1)+2)}|{slot2.center(len(slot2)+2)}\n"
-        sim_string += f"{score1.center(len(slot1)+2)}|{score2.center(len(slot2)+2)}"
+        sim_string = f"{slot1}   ---[{score1}]   |   "
+        sim_string += f"{slot2}   ---[{score2}]"
         return sim_string

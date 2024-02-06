@@ -1,11 +1,16 @@
 r"""utility functions for simulation """
+
 from statistics import mean, mode
 
 
 from .models import Session, Simulation, Strategy
 
 
-def simulate(slot1: type[Strategy], slot2: type[Strategy], rounds=1) -> Simulation:
+def simulate(
+    slot1: Strategy,
+    slot2: Strategy,
+    rounds=200,
+) -> Simulation:
     """run simulation by strategies
 
     Return:
@@ -19,11 +24,25 @@ def simulate(slot1: type[Strategy], slot2: type[Strategy], rounds=1) -> Simulati
     for _ in range(rounds):
         session = Session(names=[slot1.name, slot2.name])
 
-        session.players[0].respond(strategy=slot1(1, simulation.history))
+        slot1 = slot1.create(1, simulation.history)
+        session.players[0].respond(strategy=slot1)
 
-        session.players[1].respond(strategy=slot2(0, simulation.history))
+        slot2 = slot2.create(0, simulation.history)
+        session.players[1].respond(strategy=slot2)
 
         session.compute_payoffs()
+
+        if session.players[0].score > session.players[1].score:
+            slot1.population += 1
+            slot2.population -= 1
+
+        if session.players[1].score > session.players[0].score:
+            slot2.population += 1
+            slot1.population -= 1
+
+        if session.players[1].score == session.players[0].score:
+            slot2.population += 1
+            slot1.population += 1
 
         simulation.history.append(session)
 
@@ -34,10 +53,10 @@ def simulate(slot1: type[Strategy], slot2: type[Strategy], rounds=1) -> Simulati
 
 
 def update_statistics(
-    strategy: type[Strategy],
+    strategy: Strategy,
     simulation_instance: Simulation,
     slot_num: int,
-) -> dict:
+) -> dict[str, int]:
     """Update current statistics
 
     Args:
@@ -58,7 +77,7 @@ def update_statistics(
     return strategy.statistics
 
 
-def summarize_statistics(strategy: type[Strategy]) -> dict:
+def summarize_statistics(strategy: Strategy) -> dict:
     """summarize all statistics
 
     Args:
@@ -68,16 +87,18 @@ def summarize_statistics(strategy: type[Strategy]) -> dict:
         dict: final statistics as a dictionary of values
     """
 
-    strategy.statistics["total"] = sum(strategy.statistics["total"])
+    final_statistics: dict = {"total": [], "average": [], "mode": []}
 
-    strategy.statistics["average"] = mean(strategy.statistics["average"])
+    final_statistics["total"] = sum(strategy.statistics["total"])
 
-    strategy.statistics["mode"] = mode(strategy.statistics["mode"])
+    final_statistics["average"] = mean(strategy.statistics["average"])
 
-    return strategy.statistics
+    final_statistics["mode"] = mode(strategy.statistics["mode"])
+
+    return final_statistics
 
 
-def tabulate_summary(strategy: type[Strategy] | None = None) -> None:
+def tabulate_summary(strategy: Strategy | None = None) -> None:
     """print summary table lines
 
     Args:
@@ -93,11 +114,16 @@ def tabulate_summary(strategy: type[Strategy] | None = None) -> None:
             "mode".center(10),
             sep="",
         )
+
         return
+
+    summary = summarize_statistics(strategy)
+
     name_string = str(strategy.name)
-    total_string = str(strategy.statistics["total"])
-    average_string = str(round(strategy.statistics["average"], 3))
-    mode_string = str(strategy.statistics["mode"])
+
+    total_string = str(summary["total"])
+    average_string = str(round(summary["average"], 3))
+    mode_string = str(summary["mode"])
 
     print(
         "   ",
