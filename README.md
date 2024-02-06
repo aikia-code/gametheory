@@ -8,6 +8,16 @@ Game theory is a key tool for analyzing strategic interactions and decision-maki
 
 Inspired by [Robert Axelrod's 1984 The Evolution of Cooperation](https://www.researchgate.net/publication/316766066_Robert_Axelrod's_1984_The_Evolution_of_Cooperation) and [Veritasium's take on the topic](https://youtu.be/mScpHTIi-kM?si=15H8lTjRfC2YoQHG)
 
+<!-- USAGE EXAMPLES -->
+
+## Usage
+
+### Dilemma
+
+1. clone the repo: `git clone https://github.com/ProsperoKay/gametheory.git`
+2. run `dilemma` with `python -m dilemma`
+3. play around with the simulation
+
 <!-- Strategies -->
 
 ## Strategies
@@ -25,15 +35,8 @@ Inspired by [Robert Axelrod's 1984 The Evolution of Cooperation](https://www.res
 |7| Unforgiving|Strategy defects the rest of the game if opponent defects even once|✔️|
 |8| PrimeDefector|Strategy defects at every prime numbered stage|❌|
 
-<!-- USAGE EXAMPLES -->
 
-## Usage
 
-### Dilemma
-
-1. clone the repo: `git clone https://github.com/ProsperoKay/gametheory.git`
-2. run `dilemma` with `python -m dilemma`
-3. play around with the simulation
 
 <!-- DEFINITIONS -->
 
