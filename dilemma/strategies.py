@@ -124,5 +124,5 @@ class Historian(Strategy):
 
         if total_defect > total_cooperate or total_cooperate == 0:
             return DEFECT
-        else:
-            return COOPERATE
+
+        return COOPERATE
