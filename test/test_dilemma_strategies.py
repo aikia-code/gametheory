@@ -9,6 +9,7 @@ from dilemma.strategies import (
     Historian,
     TitForTat,
     TitFor2Tat,
+    Unforgiving,
 )
 
 
@@ -45,9 +46,16 @@ class TestDilemmaStrategies:
         assert simulation.get_total_score(2) == 54
         assert simulation.get_mode_score(2) == simulation.get_mode_score(1) == 1
 
-    def test_historian_strategy(self):
+    def test_historian_unforgiving_strategy(self):
         """Test the strategy with match ups"""
 
         simulation = simulate(Historian([]), AlwaysDefect([]), 50)
         assert simulation.get_total_score(1) == 49
         assert simulation.get_total_score(2) == 54
+
+        simulation = simulate(Unforgiving([]), AlwaysDefect([]), 50)
+        assert simulation.get_total_score(1) == 49
+        assert simulation.get_total_score(2) == 54
+
+        simulation = simulate(Unforgiving([]), Historian([]), 50)
+        assert simulation.get_total_score(1) == simulation.get_total_score(2) == 150
