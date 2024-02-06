@@ -106,7 +106,7 @@ class Unforgiving(Strategy):
 class Historian(Strategy):
     """Historian strategy
 
-    Defects when opponent has defected more historically
+    Defects when opponent has only defected or defected more historically
     """
 
     name = "Historian"
@@ -122,4 +122,7 @@ class Historian(Strategy):
         total_cooperate = self.opponent_action_history.count(COOPERATE)
         total_defect = self.opponent_action_history.count(DEFECT)
 
-        return DEFECT if total_defect > total_cooperate else COOPERATE
+        if total_defect > total_cooperate or total_cooperate == 0:
+            return DEFECT
+        else:
+            return COOPERATE
