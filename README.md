@@ -8,6 +8,23 @@ Game theory is a key tool for analyzing strategic interactions and decision-maki
 
 Inspired by [Robert Axelrod's 1984 The Evolution of Cooperation](https://www.researchgate.net/publication/316766066_Robert_Axelrod's_1984_The_Evolution_of_Cooperation) and [Veritasium's take on the topic](https://youtu.be/mScpHTIi-kM?si=15H8lTjRfC2YoQHG)
 
+<!-- Strategies -->
+
+## Strategies
+
+**Statuses** - Added[✔️]   |   To Be Added[❌]
+
+|No.|Strategy|Description|Status|
+|--|--|--|--|
+|1| AlwaysCooperate|Strategy always cooperates with opponent in every matchup|✔️|
+|2| AlwaysDefect|Strategy always defects in every matchup|✔️|
+|3| RandomDefect|Strategy defects at random|✔️|
+|4| TitForTat|Strategy always cooperates but defects only after opponent defects once then goes back to cooperate after opponent cooperates|✔️|
+|5| TitFor2Tat|Strategy always cooperates but defects once after opponent defects twice in a row then goes back to cooperate after opponent cooperates|✔️|
+|6| Historian|Strategy defects if opponent historically defects more than cooperates|✔️|
+|7| Unforgiving|Strategy defects the rest of the game if opponent defects even once|✔️|
+|8| PrimeDefector|Strategy defects at every prime numbered stage|❌|
+
 <!-- USAGE EXAMPLES -->
 
 ## Usage
