@@ -4,7 +4,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### 0.4.1 (2024-02-06)
 
-
 ### Features
 
 * :sparkles: add `get_action_pattern ([1cf553b](https://github.com/ProsperoKay/gametheory/commit/1cf553b65cd3c89729a88dcb85ec4769abe6be90))
@@ -27,7 +26,6 @@ All notable changes to this project will be documented in this file. See [standa
 * **strategy:** :sparkles: add get strategy name ([d179643](https://github.com/ProsperoKay/gametheory/commit/d1796438414e612806b0f04a3a859ef74beac4ac))
 * **utils:** :sparkles: add tabulate summary ([76e21ea](https://github.com/ProsperoKay/gametheory/commit/76e21ea85083c61baf4b249d190634d22c9eefb3))
 
-
 ### Bug Fixes
 
 * :green_heart: lint warning ([e13efa8](https://github.com/ProsperoKay/gametheory/commit/e13efa81b25b04bbd8044982556a91bceba4ccdb))
@@ -40,7 +38,6 @@ All notable changes to this project will be documented in this file. See [standa
 * **utils:** :ambulance: attribute bug: use strategy instances ([c5ebe3c](https://github.com/ProsperoKay/gametheory/commit/c5ebe3c7700220fc5cb258a30cca6879164fdc15))
 
 ## 0.4.0 (2024-02-04)
-
 
 ### Features
 
@@ -56,7 +53,6 @@ All notable changes to this project will be documented in this file. See [standa
 * **simulation:** :sparkles: add setup simulation process ([51fc392](https://github.com/ProsperoKay/gametheory/commit/51fc39269eb21f77d203ec0063a18933b7d0d6ba))
 * **strategy:** :sparkles: add get strategy name ([d179643](https://github.com/ProsperoKay/gametheory/commit/d1796438414e612806b0f04a3a859ef74beac4ac))
 * **utils:** :sparkles: add tabulate summary ([76e21ea](https://github.com/ProsperoKay/gametheory/commit/76e21ea85083c61baf4b249d190634d22c9eefb3))
-
 
 ### Bug Fixes
 
