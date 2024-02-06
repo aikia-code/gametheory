@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.1](https://github.com/ProsperoKay/gametheory/compare/v0.5.0...v0.5.1) (2024-02-06)
+
+
+### Features
+
+* **ui:** :lipstick: update cui ([e58a9a4](https://github.com/ProsperoKay/gametheory/commit/e58a9a4e7af46d923fb7a82cd7407e790232e194))
+* **ui:** :lipstick: update summary cui ([291339c](https://github.com/ProsperoKay/gametheory/commit/291339c5ff53b0785a338746ebed188c59e4a415))
+
+
+### Bug Fixes
+
+* **strategy:** reset `opponent_action_history` after every `simulate` ([8281a4d](https://github.com/ProsperoKay/gametheory/commit/8281a4d437ecb53e7c9693050145a5b7ab7d4207))
+
 ## [0.5.0](https://github.com/ProsperoKay/gametheory/compare/v0.4.0...v0.5.0) (2024-02-06)
 
 
