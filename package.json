@@ -1,9 +1,11 @@
 {
   "name": "gametheory",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Simulate Game theory",
   "scripts": {
-    "release": "standard-version"
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major"
   },
   "author": "Prosperokay <prosperokay@gmail.com>",
   "repository": {

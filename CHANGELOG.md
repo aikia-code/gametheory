@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/ProsperoKay/gametheory/compare/v0.4.0...v0.5.0) (2024-02-06)
+
+
+### Features
+
+* :zap: use `summarize_simulation_table` in main ([fbed1c1](https://github.com/ProsperoKay/gametheory/commit/fbed1c18628ded7921a90f90fcb6eff1a99d7a13))
+* **models:** :sparkles: add `opponent_action_history` and `no_mercy` triger to strategy ([90fb6d8](https://github.com/ProsperoKay/gametheory/commit/90fb6d85e7d0ae6c808dac99858fdc5c9aeca635))
+* **simulation:** :sparkles: add `historian` and `tit for two tat` to simulation match up ([6fa526c](https://github.com/ProsperoKay/gametheory/commit/6fa526ca4a1ea6859993aaddd32f201ca5a04c42))
+* **simulation:** :sparkles: debug print simulations + summarize population data ([a9d22fa](https://github.com/ProsperoKay/gametheory/commit/a9d22fabffa7ff070862a001598298cfc6ac574a))
+* **simulation:** :sparkles: update `simulate` to update population attribute of strategies ([568a58c](https://github.com/ProsperoKay/gametheory/commit/568a58c4a902f0c23eb4b55e0594a27e98b4eba6))
+* **strategy:** :sparkles: add `population` attribute to store population data ([35e8cd4](https://github.com/ProsperoKay/gametheory/commit/35e8cd42e2496284b7940353fe67042d7155fa2e))
+* **strategy:** :sparkles: add `titfor2tat`, `historian`, and `unforgiving` strategies ([067a861](https://github.com/ProsperoKay/gametheory/commit/067a86168b146f360b32d380ed858bd1b1f0f1c5))
+
+
+### Bug Fixes
+
+* **models:** attribute bug. move attributes to the instance level ([1cd3ca3](https://github.com/ProsperoKay/gametheory/commit/1cd3ca3cf75f065beed4f129c177453ba9fb6585))
+* **simulation:** :ambulance: fix attribute bug. instantiate strategies ([141a31c](https://github.com/ProsperoKay/gametheory/commit/141a31c03f58b37c8213bbb5cce0ae8ff26ed278))
+* **strategy:** :bug: fix attribute bug. keep on name attribute at the class level ([75a6f6e](https://github.com/ProsperoKay/gametheory/commit/75a6f6e8f4956e62b1ad5ec792f1c7480ea16be3))
+* **utils:** :ambulance: attribute bug: use strategy instances ([5cd9486](https://github.com/ProsperoKay/gametheory/commit/5cd9486faea02db6038eed5d672d88ccfade66e9))
+
 ### 0.4.1 (2024-02-06)
 
 ### Features
