@@ -36,16 +36,34 @@ from .simulation import (
 print("Prisoner's dilemma")
 
 while True:
-    print("  [1]--- run simulation      ---[A]")
-    print("  [2]--- create matchup    ---[B]")
-
+    print(
+        "   ",
+        "   [1]---   run simulation        ---[-]",
+        "   [2]---   create matchup        ---[-]",
+        "   [3]---   close (X)             ---[-]",
+        sep="\n",
+    )
     user_choice = input("> ")
 
-    if user_choice in ["a", "A", "1"]:
-        process_run_simulation()
-        summarize_simulation_table()
+    if user_choice in ["3", "x", "X"]:
         break
 
-    if user_choice in ["b", "B", "2"]:
+    if user_choice in ["1"]:
+        process_run_simulation()
+
+        print(
+            "   ",
+            "   [1]---   Show summary?         ---[-]",
+            "   [2]---   New Simulation        ---[-]",
+            "   [3]---   close (X)             ---[-]",
+            sep="\n",
+        )
+        show_pattern = input("> ")
+        if show_pattern in ["1"]:
+            summarize_simulation_table()
+
+        if show_pattern in ["3", "x", "X"]:
+            break
+
+    if user_choice in ["2"]:
         process_setup_simulation()
-        break
