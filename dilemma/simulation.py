@@ -28,6 +28,17 @@ strategies: dict[int, Strategy] = {
 }
 
 
+def reset_strategies():
+    """Reset strategies list"""
+    strategies[1] = AlwaysCooperate([])
+    strategies[2] = AlwaysDefect([])
+    strategies[3] = RandomDefect([])
+    strategies[4] = TitForTat([])
+    strategies[5] = TitFor2Tat([])
+    strategies[6] = Historian([])
+    strategies[7] = Unforgiving([])
+
+
 def process_run_simulation() -> None:
     """sub process for full simulation"""
 

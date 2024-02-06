@@ -29,6 +29,7 @@ UI:
 from .simulation import (
     process_run_simulation,
     process_setup_simulation,
+    reset_strategies,
     summarize_simulation_table,
 )
 
@@ -64,6 +65,8 @@ while True:
 
         if show_pattern in ["3", "x", "X"]:
             break
+        reset_strategies()
 
     if user_choice in ["2"]:
         process_setup_simulation()
+        reset_strategies()
