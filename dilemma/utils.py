@@ -21,13 +21,14 @@ def simulate(
 
     simulation = Simulation()
 
+    slot1 = slot1.create(1, simulation.history)
+    slot2 = slot2.create(0, simulation.history)
+
     for _ in range(rounds):
         session = Session(names=[slot1.name, slot2.name])
 
-        slot1 = slot1.create(1, simulation.history)
         session.players[0].respond(strategy=slot1)
 
-        slot2 = slot2.create(0, simulation.history)
         session.players[1].respond(strategy=slot2)
 
         session.compute_payoffs()
