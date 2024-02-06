@@ -43,6 +43,7 @@ class Strategy:
         self.opponent_index = opponent_index
         self.session_history = session_history
         self.opponent_action_history = []
+        self.no_mercy = False
 
         return self
 

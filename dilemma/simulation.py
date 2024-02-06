@@ -13,6 +13,7 @@ from .strategies import (
     RandomDefect,
     TitFor2Tat,
     TitForTat,
+    Unforgiving,
 )
 
 # strategies list
@@ -23,6 +24,7 @@ strategies: dict[int, Strategy] = {
     4: TitForTat([]),
     5: TitFor2Tat([]),
     6: Historian([]),
+    7: Unforgiving([]),
 }
 
 
@@ -92,6 +94,27 @@ def process_run_simulation() -> None:
 
     # historian | random defect
     print(simulate(slot1=strategies[6], slot2=strategies[3]))
+
+    # unforgiving | unforgiving
+    print(simulate(slot1=strategies[7], slot2=strategies[7]))
+
+    # unforgiving | always cooperate
+    print(simulate(slot1=strategies[7], slot2=strategies[1]))
+
+    # unforgiving | always defect
+    print(simulate(slot1=strategies[7], slot2=strategies[2]))
+
+    # unforgiving | random defect
+    print(simulate(slot1=strategies[7], slot2=strategies[3]))
+
+    # unforgiving | tit 4 tat
+    print(simulate(slot1=strategies[7], slot2=strategies[4]))
+
+    # unforgiving | tit 4 2 tat
+    print(simulate(slot1=strategies[7], slot2=strategies[5]))
+
+    # unforgiving | historian
+    print(simulate(slot1=strategies[7], slot2=strategies[6]))
 
 
 def summarize_simulation_table():
