@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.2](https://github.com/ProsperoKay/gametheory/compare/v0.5.1...v0.5.2) (2024-02-06)
+
+
+### Features
+
+* **strategy:** :sparkles: unforgiving strategy ([7ceeba5](https://github.com/ProsperoKay/gametheory/commit/7ceeba52e3e69bf20460cb174dbdce1a8f56f150))
+
+
+### Bug Fixes
+
+* :rotating_light: resolve lint ([f843d53](https://github.com/ProsperoKay/gametheory/commit/f843d53a2c5ea0b2593109c092718cd0b7a74941))
+* **main:** :ambulance: add reset for `strategies` ([0576976](https://github.com/ProsperoKay/gametheory/commit/05769763d6417817073f0b7f877148322645dd15))
+
 ### [0.5.1](https://github.com/ProsperoKay/gametheory/compare/v0.5.0...v0.5.1) (2024-02-06)
 
 
