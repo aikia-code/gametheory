@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.1](https://github.com/ProsperoKay/gametheory/compare/v0.6.0...v0.6.1) (2024-02-07)
+
+
+### Bug Fixes
+
+* :ambulance: add `# the sucker loses and dies` `# both players benefit and survive when they cooperate` `# both players lose and die out when they defect` ([9ea4fac](https://github.com/ProsperoKay/gametheory/commit/9ea4fac3401ff036ed8b04856ffc4b377fcc9ec8))
+
 ## [0.6.0](https://github.com/ProsperoKay/gametheory/compare/v0.5.3...v0.6.0) (2024-02-06)
 
 ### [0.5.3](https://github.com/ProsperoKay/gametheory/compare/v0.5.2...v0.5.3) (2024-02-06)
