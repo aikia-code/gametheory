@@ -33,6 +33,7 @@ def simulate(
 
         session.compute_payoffs()
 
+        # the sucker loses and dies
         if session.players[0].score > session.players[1].score:
             slot1.population += 1
             slot2.population -= 1
@@ -41,9 +42,15 @@ def simulate(
             slot2.population += 1
             slot1.population -= 1
 
-        if session.players[1].score == session.players[0].score:
+        # both players benefit and survive when they cooperate
+        if session.players[1].score == session.players[0].score == 3:
             slot2.population += 1
             slot1.population += 1
+
+        # both players lose and die out when they defect
+        if session.players[1].score == session.players[0].score == 1:
+            slot2.population -= 1
+            slot1.population -= 1
 
         simulation.history.append(session)
 
