@@ -1,11 +1,20 @@
-
 [project]
-name = "dilemma"
+name = "gametheory"
 authors = [{name = "ProsperoKay", email = "prosperokay@gmail.com"}]
+classifiers = ["License :: OSI Approved :: MIT License"]
 readme = "README.md"
 license = {file = "LICENSE"}
-classifiers = ["License :: OSI Approved :: MIT License"]
-dynamic = ["version", "description"]
+version = "0.6.1"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pylint",
+    "mypy",
+    "flit",
+]
 
 [build-system]
 requires = ["flit_core >=3.2,<4"]
