@@ -54,13 +54,13 @@ def simulate(
 
         simulation.history.append(session)
 
-    update_statistics(slot1, simulation, 1)
-    update_statistics(slot2, simulation, 2)
+    __update_statistics(slot1, simulation, 1)
+    __update_statistics(slot2, simulation, 2)
 
     return simulation
 
 
-def update_statistics(
+def __update_statistics(
     strategy: Strategy,
     simulation_instance: Simulation,
     slot_num: int,
@@ -85,7 +85,7 @@ def update_statistics(
     return strategy.statistics
 
 
-def summarize_statistics(strategy: Strategy) -> dict:
+def __summarize_statistics(strategy: Strategy) -> dict:
     """summarize all statistics
 
     Args:
@@ -125,7 +125,7 @@ def tabulate_summary(strategy: Strategy | None = None) -> None:
 
         return
 
-    summary = summarize_statistics(strategy)
+    summary = __summarize_statistics(strategy)
 
     name_string = str(strategy.name)
 

@@ -154,9 +154,9 @@ def summarize_simulation_table():
 def process_setup_simulation() -> None:
     """sub process for user to setup simulation"""
 
-    slot1 = user_input_select_strategy("slot-1")
+    slot1 = __user_input_select_strategy("slot-1")
 
-    slot2 = user_input_select_strategy("slot-2")
+    slot2 = __user_input_select_strategy("slot-2")
 
     print("specify number of rounds")
     number_of_rounds = int(input("   > "))
@@ -173,7 +173,7 @@ def process_setup_simulation() -> None:
         "  ",
         "   [1]---   Show action pattern?   ---[-]",
         "   [2]---   New Simulation         ---[-]",
-        "   [3]---   close (X)              ---[-]",
+        "   [3]---   return                 ---[-]",
         sep="\n",
     )
     show_pattern = input("> ")
@@ -184,7 +184,7 @@ def process_setup_simulation() -> None:
         return
 
 
-def user_input_select_strategy(slot_label: str) -> Strategy:
+def __user_input_select_strategy(slot_label: str) -> Strategy:
     """select strategy sequence
 
     Args:
