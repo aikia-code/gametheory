@@ -1,7 +1,11 @@
 [project]
 name = "gametheory"
-authors = [{name = "ProsperoKay", email = "prosperokay@gmail.com"}]
-classifiers = ["License :: OSI Approved :: MIT License"]
+authors = [
+    {name = "ProsperoKay", email = "prosperokay@gmail.com"}
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License"
+]
 readme = "README.md"
 license = {file = "LICENSE"}
 version = "0.6.1"
