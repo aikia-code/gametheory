@@ -5,8 +5,12 @@
   "description": "Simulate Game theory",
   "scripts": {
     "release": "standard-version",
+    "release:patch": "standard-version --release-as patch",
     "release:minor": "standard-version --release-as minor",
-    "release:major": "standard-version --release-as major"
+    "release:major": "standard-version --release-as major",
+    "release:alpha": "standard-version --prerelease alpha",
+    "release:beta": "standard-version --prerelease beta",
+    "release:first": "standard-version --first-release"
   },
   "author": "Prosperokay <prosperokay@gmail.com>",
   "repository": {
