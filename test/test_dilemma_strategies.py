@@ -59,3 +59,16 @@ class TestDilemmaStrategies:
 
         simulation = simulate(Unforgiving([]), Historian([]), 50)
         assert simulation.get_total_score(1) == simulation.get_total_score(2) == 150
+
+    def test_strategy_population_info(self):
+        """test strategy population operations"""
+
+        always_defect = AlwaysDefect([])
+        tit_4_2_tat = TitFor2Tat([])
+
+        assert always_defect.population == tit_4_2_tat.population == 2
+
+        simulate(always_defect, tit_4_2_tat, 50)
+
+        assert always_defect.population == -44
+        assert tit_4_2_tat.population == -48
