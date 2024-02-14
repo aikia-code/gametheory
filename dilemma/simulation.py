@@ -131,24 +131,26 @@ def process_run_simulation() -> None:
 def summarize_simulation_table():
     """summarize and tabulate statistics"""
     print(
+        "   ",
         "summary ",
         "================================================================ ",
         sep="\n",
     )
-
+    # TODO: Implement sorting
     tabulate_summary()
 
     for strategy in strategies.values():
         tabulate_summary(strategy)
 
     print(
+        "   ",
         "population",
         "================================================================ ",
         sep="\n",
     )
 
     for strategy in strategies.values():
-        print(f"   {strategy.name}   ---p{strategy.population}")
+        print(f"   {strategy.name.ljust(30)}   {str(strategy.population).ljust(10)}")
 
 
 def process_setup_simulation() -> None:
@@ -161,16 +163,28 @@ def process_setup_simulation() -> None:
     print("specify number of rounds")
     number_of_rounds = int(input("   > "))
 
-    print("simulating... ")
-
     simulation = simulate(slot1, slot2, number_of_rounds)
 
+    print(
+        "   ",
+        "summary ",
+        "================================================================ ",
+        sep="\n",
+    )
     tabulate_summary()
     tabulate_summary(slot1)
     tabulate_summary(slot2)
+    print(
+        "   ",
+        "population ",
+        "================================================================ ",
+        sep="\n",
+    )
+    print(f"   {slot1.name.ljust(30)}   {str(slot1.population).ljust(10)}")
+    print(f"   {slot2.name.ljust(30)}   {str(slot2.population).ljust(10)}")
 
     print(
-        "  ",
+        "   ",
         "   [1]---   Show action pattern?   ---[-]",
         "   [2]---   New Simulation         ---[-]",
         "   [3]---   return                 ---[-]",
