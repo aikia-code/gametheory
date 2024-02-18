@@ -99,6 +99,7 @@ class Session:
 class Simulation:
     """represent information from a simulation"""
 
+    # TODO: HISTORY DATA TO CSV | TABLE
     def __init__(self) -> None:
         self.history: list[Session] = []
 
