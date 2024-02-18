@@ -16,7 +16,7 @@ Inspired by [Robert Axelrod's 1984 The Evolution of Cooperation](https://www.res
 
 1. clone the repo: `git clone https://github.com/ProsperoKay/gametheory.git`
 2. run `dilemma` with `python -m dilemma`
-3. play around with the simulation
+3. interact with simulation
 
 <!-- Strategies -->
 
