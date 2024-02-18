@@ -1,5 +1,8 @@
-r"""symbols collection module
+r"""collection of simulation symbols 
 """
+
+# ------------------------------------------
+# Types
 
 Payoff = tuple[int, str, str]
 PlayerAction = tuple[int, str, str]
