@@ -6,6 +6,17 @@ authors = [
 classifiers = [
     "License :: OSI Approved :: MIT License"
 ]
+description = "Interact with Gametheory concepts simulations"
+keywords = [
+    "gametheory",
+    "puzzle",
+    "simulation",
+    "science",
+    "cui",
+    "interactive",
+    "concepts",
+    "dilemma",
+]
 readme = "README.md"
 license = {file = "LICENSE"}
 version = "0.6.1"
