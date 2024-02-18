@@ -13,7 +13,6 @@ PlayerAction = tuple[int, str, str]
 COOPERATE: PlayerAction = (0, "COOPERATE", "+")
 DEFECT: PlayerAction = (1, "DEFECT", "-")
 
-
 # ------------------------------------------
 # Payoffs
 PUNISH: Payoff = (1, "PUNISH", "P")
