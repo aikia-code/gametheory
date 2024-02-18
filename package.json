@@ -2,7 +2,7 @@
   "private":true,
   "name": "gametheory",
   "version": "0.6.1",
-  "description": "Simulate Game theory",
+  "description": "Interact with Game theory concept  simulations",
   "scripts": {
     "release": "standard-version",
     "release:patch": "standard-version --release-as patch",
