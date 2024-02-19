@@ -35,9 +35,6 @@ Inspired by [Robert Axelrod's 1984 The Evolution of Cooperation](https://www.res
 |7| Unforgiving|Strategy defects the rest of the game if opponent defects even once|✔️|
 |8| PrimeDefector|Strategy defects at every prime numbered stage|❌|
 
-
-
-
 <!-- DEFINITIONS -->
 
 [email]: prosperokay@gmail.com

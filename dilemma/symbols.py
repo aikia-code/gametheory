@@ -1,15 +1,13 @@
-r"""collection of simulation symbols 
+r"""collection of simulation symbols
 """
 
 # ------------------------------------------
 # Types
-
 Payoff = tuple[int, str, str]
 PlayerAction = tuple[int, str, str]
 
 # ------------------------------------------
 # Actions
-
 COOPERATE: PlayerAction = (0, "COOPERATE", "+")
 DEFECT: PlayerAction = (1, "DEFECT", "-")
 

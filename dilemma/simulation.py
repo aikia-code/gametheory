@@ -59,7 +59,8 @@ def process_run_simulation() -> None:
     # always defect | random defect
     print(simulate(slot1=strategies[2], slot2=strategies[3]))
 
-    # random defect | random defect | TODO: fix: random defect probability to 50%
+    # TODO: fix: random defect probability to 50%
+    # random defect | random defect |
 
     # tit for tat | tit for tat
     print(simulate(slot1=strategies[4], slot2=strategies[4]))
