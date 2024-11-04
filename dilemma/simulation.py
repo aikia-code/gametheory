@@ -1,12 +1,12 @@
 r"""Simulation module for main subprocesses"""
 
-from .models import Strategy
+from models import Strategy
 
-from .utils import (
+from utils import (
     simulate,
     tabulate_summary,
 )
-from .strategies import (
+from strategies import (
     AlwaysCooperate,
     AlwaysDefect,
     Historian,

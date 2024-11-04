@@ -7,10 +7,10 @@ from typing import Self
 
 
 # Actions
-from .symbols import COOPERATE, DEFECT, PlayerAction
+from symbols import COOPERATE, DEFECT, PlayerAction
 
 # Payoffs
-from .symbols import PUNISH, REWARD, TEMPT, SUCKER
+from symbols import PUNISH, REWARD, TEMPT, SUCKER
 
 
 class Strategy:

@@ -5,8 +5,8 @@ r"""A collection of available strategies for simulation
 from random import choice
 
 # standard simulation imports
-from .symbols import COOPERATE, DEFECT
-from .models import Strategy
+from symbols import COOPERATE, DEFECT
+from models import Strategy
 
 
 # -----------------------------------------------------

@@ -3,7 +3,7 @@ r"""utility functions for simulation """
 from statistics import mean, mode
 
 
-from .models import Session, Simulation, Strategy
+from models import Session, Simulation, Strategy
 
 
 def simulate(
