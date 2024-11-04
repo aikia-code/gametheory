@@ -161,6 +161,7 @@ cython_debug/
 
 # visual studio code project files
 .vscode
+.vs
 
 # Local History for Visual Studio Code
 .history
